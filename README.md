@@ -1,6 +1,21 @@
 #  Activity Pub Explorer
 
+[![Swift Version][swift-image]][swift-url]
+
 Toy app to explore how Mastodon and ActivityPub feeds in general might be handled with Swift / SwiftUI
+
+None of this should be used as an example of best practices. 
+
+## Files this Repo
+
+- ContentView: The main view
+- RequestService: File with the network connection
+- MNStatusExample: JSON examplar of what Mastodon API sends back
+- MastodonStatusItem: https://app.quicktype.io/ generated Struct for a Status item
+- HTMLSnippetRender: How to get `HTML` -> `AttributedString` for use in `SwiftUI`
+- API: Generic Framework baseline for REST APIs
+- MastodonAPI: Mastodon API calls
+- ActivityPubGeneral - Directory for AP general stuff. Not yet in use.
 
 ## Resources
 
@@ -28,3 +43,13 @@ WARNING: Using `NSAttributedStrings` in a scrolling view, even when passed off t
 - https://stackoverflow.com/questions/56892691/how-to-show-html-or-markdown-in-a-swiftui-text
 - https://stackoverflow.com/questions/72689505/attributegraph-precondition-failure-setting-value-during-update-when-using-nsat
 - https://stackoverflow.com/questions/59889020/how-to-use-an-nsattributedstring-with-a-scrollview-in-swiftui
+
+## Release History
+
+* 0.0.0
+    * Current State. Wouldn't exactly call it "released".  
+
+
+
+[swift-image]:https://img.shields.io/badge/swift-5.7-orange.svg
+[swift-url]: https://swift.org/
