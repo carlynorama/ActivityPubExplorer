@@ -1,5 +1,6 @@
 #  Activity Pub Explorer
 
+Toy app to explore how Mastodon and ActivityPub feeds in general might be handled with Swift / SwiftUI
 
 ## Resources
 
