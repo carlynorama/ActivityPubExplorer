@@ -1,4 +1,7 @@
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
+
+//TO AUDIENCE: This was modified to make more things optional and remove JSONNULL references for now
+
 // To parse the JSON, add this file to your project and do:
 //
 //   let mastodonStatusItem = try? newJSONDecoder().decode(MastodonStatusItem.self, from: jsonData)
