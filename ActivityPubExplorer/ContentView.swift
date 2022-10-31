@@ -5,10 +5,10 @@
 //  Created by Labtanza on 10/29/22.
 //
 
-//TODO: Doesn't crash bust still getting:
-//=== AttributeGraph: cycle detected through attribute ***SomeNumber*** ===
+
 
 import SwiftUI
+
 
 struct StatusItemRowView: View {
     let item:MastodonStatusItem
@@ -33,9 +33,16 @@ struct ContentView: View {
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
             List(list, id:\.id) { item in
-                StatusItemRowView(item: item).id(UUID())
+                VStack(alignment: .leading) {
+                    Text("\(item.account.username)")
+                        .font(.headline)
+                    Text(item.content?.htmlToAttributedString() ?? "No content provided").id(UUID())
+                }.id(UUID())  //Removing this will make program crash.
+                //TODO: Doesn't crash but getting below error when use subview.
+                //=== AttributeGraph: cycle detected through attribute ***SomeNumber*** ===
+                //StatusItemRowView(item: item).id(UUID())
             }
-        }.id(UUID()) //Removing this will make program crash.
+        }
         .padding()
         .task {
             await testTimeLine()
