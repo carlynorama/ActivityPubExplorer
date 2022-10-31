@@ -5,6 +5,9 @@
 //  Created by Labtanza on 10/29/22.
 //
 
+//TODO: Doesn't crash bust still getting:
+//=== AttributeGraph: cycle detected through attribute ***SomeNumber*** ===
+
 import SwiftUI
 
 struct StatusItemRowView: View {
@@ -13,7 +16,7 @@ struct StatusItemRowView: View {
         VStack(alignment: .leading) {
             Text("\(item.account.username)")
                 .font(.headline)
-            Text(item.content?.htmlToAttributedString() ?? "No content provided")
+            Text(item.content?.htmlToAttributedString() ?? "No content provided").id(UUID())
         }
     }
 }
@@ -30,7 +33,7 @@ struct ContentView: View {
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
             List(list, id:\.id) { item in
-                StatusItemRowView(item: item)
+                StatusItemRowView(item: item).id(UUID())
             }
         }.id(UUID()) //Removing this will make program crash.
         .padding()

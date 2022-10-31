@@ -13,7 +13,7 @@ struct MastodonAPI {
     let requestService:RequestService = RequestService()
     
     
-    public func publicTimeline(itemCount:Int = 5) async throws -> [MastodonStatusItem] {
+    public func publicTimeline(itemCount:Int = 20) async throws -> [MastodonStatusItem] {
             let url = try API.urlFrom(server: server, endpoint: publicTimelineEndpoint(count: itemCount))
             let result = try await requestService.fetchValue(ofType: [MastodonStatusItem].self, from: url)
             return result
