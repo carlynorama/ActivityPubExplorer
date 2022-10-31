@@ -23,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA7CFCE02910839F001A6E80 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		DAF8A6AA290D7DA500E093C0 /* ActivityPubExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityPubExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPubExplorerApp.swift; sourceTree = "<group>"; };
 		DAF8A6AF290D7DA500E093C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				DAF8A6C6290DA7D600E093C0 /* README.md */,
+				DA7CFCE02910839F001A6E80 /* LICENSE.md */,
 				DAF8A6AC290D7DA500E093C0 /* ActivityPubExplorer */,
 				DAF8A6AB290D7DA500E093C0 /* Products */,
 			);
