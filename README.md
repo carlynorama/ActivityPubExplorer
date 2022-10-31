@@ -4,7 +4,7 @@
 ## Resources
 
 ### Working with URLS and HTTP
-- See Networking Example: 
+- See also the resources from Networking Example: https://github.com/carlynorama/NetworkingExample
 
 ### Working with API
 - https://docs.joinmastodon.org/client/intro/
