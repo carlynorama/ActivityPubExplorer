@@ -7,6 +7,17 @@
 
 import SwiftUI
 
+struct StatusItemRowView: View {
+    let item:MastodonStatusItem
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("\(item.account.username)")
+                .font(.headline)
+            Text(item.content?.htmlToAttributedString() ?? "No content provided")
+        }
+    }
+}
+
 struct ContentView: View {
     var mastodonInstance = MastodonAPI(server: myTestServer)
     
@@ -19,17 +30,18 @@ struct ContentView: View {
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
             List(list, id:\.id) { item in
-                        VStack(alignment: .leading) {
-                            Text("\(item.account.username)")
-                                .font(.headline)
-                            Text(item.content ?? "Nothing here")
-                        }
-                    }
-        }
+                StatusItemRowView(item: item)
+            }
+        }.id(UUID()) //Removing this will make program crash.
         .padding()
         .task {
             await testTimeLine()
         }
+    }
+    
+    func printString(_ item:MastodonStatusItem) -> String? {
+        print(item.content ?? "nothing")
+        return item.content
     }
     
     func testTimeLine() async {
