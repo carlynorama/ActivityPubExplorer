@@ -61,7 +61,7 @@ actor RequestService {
         guard checkForValidHTTP(response).isValid else {
             throw RequestServiceError("Not valid HTTP")
         }
-        let string = String(decoding: data, as: UTF8.self)
+        //let string = String(decoding: data, as: UTF8.self)
         //print(string)
         
         let decoded = try decoder.decode(SomeDecodable.self, from: data)
