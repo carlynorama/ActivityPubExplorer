@@ -119,9 +119,9 @@ class JSONNull: Codable, Hashable {
         return true
     }
 
-    //TODO: replace with hash(into:)
-    public var hashValue: Int {
-        return 0
+    //https://stackoverflow.com/questions/55395207/swift-hashable-hashvalue-is-deprecated-as-a-protocol-requirement
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(0)
     }
 
     public init() {}
