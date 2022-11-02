@@ -30,6 +30,7 @@ None of this should be used as an example of best practices.
 
 ### Working with the JSON
 - https://swiftsenpai.com/testing/implemented-http-request-helper-without-server/
+- https://jsonformatter.org/
 
 ### Rendering HTML in the UI
 WARNING: Using `NSAttributedStrings` in a scrolling view, even when passed off to an `AttributedString` can crash the program if an .id(UUID()) is not used on the view. Which view exactly seems to change depending on the exact scenario.  
