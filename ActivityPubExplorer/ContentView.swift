@@ -47,6 +47,9 @@ struct ContentView: View {
         .task {
             await testTimeLine()
         }
+        .task {
+            await mastodonInstance.getFollowing(for: "knitter")
+        }
     }
     
     func printString(_ item:MastodonStatusItem) -> String? {
