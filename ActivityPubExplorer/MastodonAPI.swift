@@ -28,9 +28,59 @@ struct MastodonAPI {
             print(error)
         }
     }
+    
+    public func getFollowing(for account:String) async {
+        do {
+            let url = try API.urlFrom(server: server, path: pathForJSON(account: account, forKey: "following"), usingAPIBase: false)
+            let result = try await requestService.fetchRawString(from: url)
+            print(result)
+        } catch {
+            print(error)
+        }
+    }
 
     
     //MARK: Endpoints
+    
+    let apJSONEndpointPaths = [
+        "id" : "/users/{handle}",
+        "following" : "{id_string}/following",
+        "followers" : "{id_string}/followers",
+        "liked" : "{id_string}/liked",
+        "inbox" : "{id_string}/inbox",
+        "outbox" : "{id_string}/outbox"
+    ]
+    
+    private func pathForJSON(account:String, forKey key:String) throws -> String {
+        let root = apJSONEndpointPaths["id"]?.replacingOccurrences(of: "{handle}", with: account) ?? ""
+        let path = apJSONEndpointPaths[key]?.replacingOccurrences(of: "{id_string}", with: root)
+        
+        print(path)
+        
+        guard var path else {
+            throw APIError("Could not build path from keys")
+        }
+        
+        path = path.appending(".json")
+        print(path)
+        return path
+    }
+    
+    private func activityPubStyleJSON(forUsername:String, forKey key:String) throws -> Endpoint {
+        let root = apJSONEndpointPaths["id"]?.replacingOccurrences(of: "{handle}", with: forUsername) ?? ""
+        let path = apJSONEndpointPaths[key]?.replacingOccurrences(of: "{id_string}", with: root)
+        
+        print(path)
+        
+        guard var path else {
+            throw APIError("Could not build path from keys")
+        }
+        
+        path = path.appending(".json")
+        
+        return Endpoint(path: path, queryItems: [])
+    }
+    
     
     //see https://docs.joinmastodon.org/methods/timelines/
     private func publicTimelineEndpoint(for who:String = "public", count:Int) -> Endpoint {

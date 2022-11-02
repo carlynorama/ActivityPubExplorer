@@ -23,7 +23,7 @@ struct MastodonStatusItem: Codable, Identifiable {
     let account: Account
     let mediaAttachments, mentions, tags, emojis: [JSONAny]?
     let card: Card?
-    let poll: String?
+    let poll: Poll?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -38,7 +38,8 @@ struct MastodonStatusItem: Codable, Identifiable {
         case favouritesCount = "favourites_count"
         case favourited, reblogged, muted, bookmarked, content, reblog, application, account
         case mediaAttachments = "media_attachments"
-        case mentions, tags, emojis, card, poll
+        case mentions, tags, emojis, card
+        case poll
     }
 }
 
@@ -110,6 +111,35 @@ struct Card: Codable {
         case embedURL = "embed_url"
     }
 }
+
+// MARK: - Poll
+struct Poll: Codable {
+    let id, expiresAt: String
+    let expired, multiple: Bool
+    let votesCount, votersCount: Int
+    let options: [PollOption]
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case expiresAt = "expires_at"
+        case expired, multiple
+        case votesCount = "votes_count"
+        case votersCount = "voters_count"
+        case options
+    }
+}
+
+// MARK: - Option
+struct PollOption: Codable {
+    let title: String
+    let votesCount: Int
+
+    enum CodingKeys: String, CodingKey {
+        case title
+        case votesCount = "votes_count"
+    }
+}
+
 
 // MARK: - Encode/decode helpers
 
