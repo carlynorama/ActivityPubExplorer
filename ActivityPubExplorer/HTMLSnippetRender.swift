@@ -9,15 +9,32 @@ import SwiftUI
 //
 //
 
+public extension NSAttributedString {
+    convenience init?(_ html: String) {
+        guard let data = html.data(using: .unicode) else {
+                return nil
+        }
+
+        try? self.init(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+    }
+}
+
 extension String {
     //Usage
     //List(ExampleText.harderHTMLTests, id:\.self) { item in
     //    Text(item.listCrasher() ?? "Nothing to see").id(UUID()) <- Will need id() somewhere if view scrolls
     //}
+    //Screws up emojis
     func htmlToOptionalAttributedString() -> AttributedString? {
         let data = Data(self.utf8)
         return try? AttributedString(NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil))
     }
+    
+    //Parses emoji's correctly. 
+    func parseAsHTML() -> AttributedString? {
+        let data = Data(self.utf8)
+        return try? AttributedString(NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html,  .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil))
+     }
     
     //Usage
     //List(ExampleText.harderHTMLTests, id:\.self) { item in
