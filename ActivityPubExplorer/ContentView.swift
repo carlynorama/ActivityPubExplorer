@@ -36,7 +36,7 @@ struct ContentView: View {
                 VStack(alignment: .leading) {
                     Text("\(item.account.username)")
                         .font(.headline)
-                    Text(item.content?.htmlToAttributedString() ?? "No content provided").id(UUID())
+                    Text(item.contentText).id(UUID())
                 }.id(UUID())  //Removing this will make program crash.
                 //TODO: Doesn't crash but getting below error when use subview.
                 //=== AttributeGraph: cycle detected through attribute ***SomeNumber*** ===
