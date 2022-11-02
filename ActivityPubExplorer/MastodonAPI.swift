@@ -55,7 +55,7 @@ struct MastodonAPI {
         let root = apJSONEndpointPaths["id"]?.replacingOccurrences(of: "{handle}", with: account) ?? ""
         let path = apJSONEndpointPaths[key]?.replacingOccurrences(of: "{id_string}", with: root)
         
-        print(path)
+        print(path ?? "no path")
         
         guard var path else {
             throw APIError("Could not build path from keys")
@@ -70,7 +70,7 @@ struct MastodonAPI {
         let root = apJSONEndpointPaths["id"]?.replacingOccurrences(of: "{handle}", with: forUsername) ?? ""
         let path = apJSONEndpointPaths[key]?.replacingOccurrences(of: "{id_string}", with: root)
         
-        print(path)
+        print(path ?? "no path")
         
         guard var path else {
             throw APIError("Could not build path from keys")
