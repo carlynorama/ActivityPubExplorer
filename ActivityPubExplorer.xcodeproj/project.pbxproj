@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DAC897D42912D2E9004116EA /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC897D32912D2E9004116EA /* Context.swift */; };
 		DAF8A6AE290D7DA500E093C0 /* ActivityPubExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */; };
 		DAF8A6B0290D7DA500E093C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8A6AF290D7DA500E093C0 /* ContentView.swift */; };
 		DAF8A6B2290D7DA600E093C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF8A6B1290D7DA600E093C0 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		DA7CFCE02910839F001A6E80 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		DAC897D32912D2E9004116EA /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		DAF8A6AA290D7DA500E093C0 /* ActivityPubExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityPubExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPubExplorerApp.swift; sourceTree = "<group>"; };
 		DAF8A6AF290D7DA500E093C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				DAF8A6BC290D7E3100E093C0 /* APSampleData.swift */,
 				DAF8A6C0290D82C500E093C0 /* APPerson.swift */,
+				DAC897D32912D2E9004116EA /* Context.swift */,
 				DAF8A6C2290D831400E093C0 /* APObject.swift */,
 			);
 			path = ActivityPubGeneral;
@@ -177,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC897D42912D2E9004116EA /* Context.swift in Sources */,
 				DAF8A6B0290D7DA500E093C0 /* ContentView.swift in Sources */,
 				DAF8A6F7290F110F00E093C0 /* MastodonAPI.swift in Sources */,
 				DAF8A6FE290F667600E093C0 /* HTMLSnippetRender.swift in Sources */,
