@@ -10,17 +10,20 @@ import Foundation
 
 // MARK: - MastodonStatusItem
 struct MastodonStatusItem: Codable, Identifiable {
+    //Appears to be always
     let id, createdAt: String
-    let inReplyToID, inReplyToAccountID: String?
-    let sensitive: Bool?
-    let spoilerText, visibility, language: String?
+    let account: Account
+    let content: String
+    let sensitive: Bool
+    let spoilerText, visibility, language: String
+    let repliesCount, reblogsCount, favouritesCount: Int
     let uri, url: String
-    let repliesCount, reblogsCount, favouritesCount: Int?
+    
+    //Appears to be optional
+    let inReplyToID, inReplyToAccountID: String?
     let favourited, reblogged, muted, bookmarked: Bool?
-    let content: String?
     let reblog: String?
     let application: Application?
-    let account: Account
     let mediaAttachments, mentions, tags, emojis: [JSONAny]?
     let card: Card?
     let poll: Poll?
