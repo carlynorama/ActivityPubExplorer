@@ -17,16 +17,7 @@ extension MastodonStatusItem {
         return "Could not render content."
     }
     
-//    func isOptionalNil(_ instance: Any) -> Bool {
-//        let mirror = Mirror(reflecting: instance)
-//        let style = mirror.displayStyle
-//        if style == .optional {
-//            mirror.
-//        }
-//
-//    }
-    
-    var whatDoIHave:String {
+    var displayableOptions:[String] {
         let mirror = Mirror(reflecting: self)
         var itemsToDisplay:[String] = []
         
@@ -40,7 +31,11 @@ extension MastodonStatusItem {
             }
         }
         
-        let returnString = itemsToDisplay.count > 0 ? "Optionals Available: \(itemsToDisplay.joined(separator: ", "))" : ""
-        return returnString
+        //let string = itemsToDisplay.joined(separator: ", ")
+        //print(string)
+        //let returnString = string
+        return itemsToDisplay
     }
+    
+    
 }

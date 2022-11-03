@@ -24,7 +24,8 @@ struct MastodonStatusItem: Codable, Identifiable {
     let favourited, reblogged, muted, bookmarked: Bool?
     let reblog: String?
     let application: Application?
-    let mediaAttachments, mentions, tags, emojis: [JSONAny]?
+    let mediaAttachments: [MediaAttachment]?
+    let mentions, tags, emojis: [JSONAny]?
     let card: Card?
     let poll: Poll?
 
@@ -115,6 +116,48 @@ struct Card: Codable {
     }
 }
 
+// MARK: - MediaAttachments
+typealias AttachmentArray = [MediaAttachment]
+struct MediaAttachments: Codable {
+    let attachments: AttachmentArray
+
+    enum CodingKeys: String, CodingKey {
+        case attachments = "media_attachments"
+    }
+}
+
+// MARK: - MediaAttachment
+struct MediaAttachment: Codable,Identifiable {
+    let id, type: String
+    let url, previewURL, remoteURL: String
+    let previewRemoteURL, textURL: JSONNull?
+    let meta: Meta?
+    let mediaAttachmentDescription, blurhash: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, type, url
+        case previewURL = "preview_url"
+        case remoteURL = "remote_url"
+        case previewRemoteURL = "preview_remote_url"
+        case textURL = "text_url"
+        case meta
+        case mediaAttachmentDescription = "description"
+        case blurhash
+    }
+}
+
+// MARK: - Meta
+struct Meta: Codable {
+    let original, small: MediaDimensions?
+}
+
+// MARK: - Dimensions
+struct MediaDimensions: Codable {
+    let width, height: Int?
+    let size: String?
+    let aspect: Double?
+}
+
 // MARK: - Poll
 struct Poll: Codable {
     let id, expiresAt: String
@@ -132,7 +175,7 @@ struct Poll: Codable {
     }
 }
 
-// MARK: - Option
+// MARK: - PollOption
 struct PollOption: Codable {
     let title: String
     let votesCount: Int

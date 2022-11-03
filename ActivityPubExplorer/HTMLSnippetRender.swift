@@ -6,31 +6,15 @@
 ////
 //
 import SwiftUI
-//
-//
 
-public extension NSAttributedString {
-    convenience init?(_ html: String) {
-        guard let data = html.data(using: .unicode) else {
-                return nil
-        }
 
-        try? self.init(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-    }
-}
 
 extension String {
     //Usage
     //List(ExampleText.harderHTMLTests, id:\.self) { item in
     //    Text(item.listCrasher() ?? "Nothing to see").id(UUID()) <- Will need id() somewhere if view scrolls
     //}
-    //Screws up emojis
-    func htmlToOptionalAttributedString() -> AttributedString? {
-        let data = Data(self.utf8)
-        return try? AttributedString(NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil))
-    }
-    
-    //Parses emoji's correctly. 
+    //Parses emoji's correctly by adding characterEncoding option.
     func parseAsHTML() -> AttributedString? {
         let data = Data(self.utf8)
         return try? AttributedString(NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html,  .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil))
@@ -40,26 +24,53 @@ extension String {
     //List(ExampleText.harderHTMLTests, id:\.self) { item in
     //    Text(item.htmlToAttributedString()).id(UUID())  <-Will need id() somewhere if view scrolls
     //}
-    func htmlToAttributedString() -> AttributedString {
+    func catchingParseAsHTML() -> AttributedString {
         do {
             let data = Data(self.utf8)
-            let result = try AttributedString(NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil))
+            let result = try AttributedString(NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html,  .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil))
             return result
         } catch {
             return AttributedString("Error parsing HTML: \(error)")
         }
     }
     
-    func markdownToOptionalAttributedString() -> AttributedString? {
+    func parseAsMarkdown() -> AttributedString? {
         return try? AttributedString(markdown: self)
     }
     
-    func markdownToAttributedString() -> AttributedString {
+    func catchingParseAsMarkdown() -> AttributedString {
         do {
             return try AttributedString(markdown: self)
         } catch {
             return AttributedString("Error parsing HTML: \(error)")
         }
+    }
+    
+//    //https://wwdcbysundell.com/2021/a-first-look-at-attributed-string/
+//    func appendLink(
+//        to string: AttributedString,
+//        label: String,
+//        url: URL
+//    ) -> AttributedString {
+//        var attributes = AttributeContainer()
+//        attributes.link = url
+//
+//        let link = AttributedString(label, attributes: attributes)
+//
+//        var string = string
+//        string.append(link)
+//        return string
+//    }
+//    
+    func linkedText(url: URL) -> AttributedString {
+        var attributes = AttributeContainer()
+        attributes.link = url
+
+        let link = AttributedString(self, attributes: attributes)
+
+        var string = AttributedString()
+        string.append(link)
+        return string
     }
 }
 ////
