@@ -66,17 +66,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DAC897DD29133E74004116EA /* StatusItemListViews */ = {
-			isa = PBXGroup;
-			children = (
-				DAC897DE29133EC3004116EA /* AccountHeaderForRowView.swift */,
-				DAC897E02913481B004116EA /* DisplayOptionsAvailableView.swift */,
-				DAC897DB29133E68004116EA /* MediaAttachmentView.swift */,
-				DAC897D92913327C004116EA /* CardView.swift */,
-			);
-			path = StatusItemListViews;
-			sourceTree = "<group>";
-		};
 		DAF8A6A1290D7DA500E093C0 = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +97,10 @@
 				DAF8A6F4290F0CBF00E093C0 /* API.swift */,
 				DAF8A6F6290F110F00E093C0 /* MastodonAPI.swift */,
 				DAF8A6AF290D7DA500E093C0 /* ContentView.swift */,
-				DAC897DD29133E74004116EA /* StatusItemListViews */,
+				DAC897DE29133EC3004116EA /* AccountHeaderForRowView.swift */,
+				DAC897E02913481B004116EA /* DisplayOptionsAvailableView.swift */,
+				DAC897DB29133E68004116EA /* MediaAttachmentView.swift */,
+				DAC897D92913327C004116EA /* CardView.swift */,
 				DAF8A6F8290F1E7500E093C0 /* ActivityPubGeneral */,
 				DAF8A6B1290D7DA600E093C0 /* Assets.xcassets */,
 				DAF8A6B3290D7DA600E093C0 /* Preview Content */,
