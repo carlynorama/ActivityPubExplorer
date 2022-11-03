@@ -16,6 +16,8 @@ struct CardView: View {
                 Text(card.title)
                 linkDisplay
             }
+        }.onAppear() {
+            print(card.type)
         }
 
     }
