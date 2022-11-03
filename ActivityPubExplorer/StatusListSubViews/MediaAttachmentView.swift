@@ -29,6 +29,7 @@ struct MediaAttachmentView: View {
                     .font(.caption)
                     .padding()
                     .background(.ultraThinMaterial)
+                    .transition(.scale(scale: 0.01, anchor: .bottomLeading))
                     .onTapGesture() {
                         withAnimation {
                             displayFullAltText = false
@@ -39,6 +40,8 @@ struct MediaAttachmentView: View {
                     .font(.caption)
                     .padding()
                     .background(.ultraThinMaterial)
+                    //.animation(.easeInOut)
+                    .transition(.scale(scale: 0.01, anchor: .bottomLeading))
                     .onTapGesture() {
                         withAnimation {
                             displayFullAltText = true
