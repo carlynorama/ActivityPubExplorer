@@ -131,7 +131,7 @@ struct MediaAttachment: Codable,Identifiable {
     let id, type: String
     let url, previewURL, remoteURL: String
     let previewRemoteURL, textURL: JSONNull?
-    let meta: Meta?
+    let meta: MediaMeta?
     let mediaAttachmentDescription, blurhash: String?
 
     enum CodingKeys: String, CodingKey {
@@ -146,9 +146,10 @@ struct MediaAttachment: Codable,Identifiable {
     }
 }
 
-// MARK: - Meta
-struct Meta: Codable {
+// MARK: - MediaMeta
+struct MediaMeta: Codable {
     let original, small: MediaDimensions?
+    let focus:MediaFocus?
 }
 
 // MARK: - Dimensions
@@ -156,6 +157,11 @@ struct MediaDimensions: Codable {
     let width, height: Int?
     let size: String?
     let aspect: Double?
+}
+
+struct MediaFocus: Codable {
+    let x:Double
+    let y:Double
 }
 
 // MARK: - Poll
