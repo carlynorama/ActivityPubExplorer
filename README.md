@@ -8,14 +8,23 @@ None of this should be used as an example of best practices.
 
 ## Files this Repo
 
-- ContentView: The main view
-- RequestService: File with the network connection
-- MNStatusExample: JSON examplar of what Mastodon API sends back
-- MastodonStatusItem: https://app.quicktype.io/ generated Struct for a Status item
-- HTMLSnippetRender: How to get `HTML` -> `AttributedString` for use in `SwiftUI`
+- ContentView: The main view, right now an example of a Mastodon server's public timeline
+
+### General
 - API: Generic Framework baseline for REST APIs
+- HTMLSnippetRender: How to get `HTML` -> `AttributedString` for use in `SwiftUI`
+- RequestService: File with the network connection
+
+### Mastodon Specific
+- MNStatusExample: JSON examplar of what Mastodon API sends back
+- MastodonStatusItem: https://app.quicktype.io/ generated Struct for a Status item and related types
+- MSTDNStatusItem+Display: Things that will likely be useful to other API's as well to prep for viewing. Creates the AttributedString. Introspects for available displayable parameters
 - MastodonAPI: Mastodon API calls
-- ActivityPubGeneral - Directory for AP general stuff. Not yet in use.
+- StatusListSubViews - Right now all dependent on the Mastodon types
+- Sample Content - Mastodon Style JSON
+
+### ActivityPub/Fediverse compliance
+- ActivityPubGeneral - Directory for AP general stuff. Not really in use yet.
 
 ## Resources
 
