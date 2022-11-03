@@ -12,6 +12,7 @@ struct MediaAttachmentView: View {
     let url:URL?
     
     @State var displayFullAltText = false
+    @State var textDisplay = "ALT"
     
     init(attachment:MediaAttachment) {
         self.attachment = attachment
@@ -22,36 +23,60 @@ struct MediaAttachmentView: View {
         ImageGetter().overlay(alignment: .bottomLeading, content: Overlay)
     }
     
+    //TODO: Which show-hide process do is better? 
+    
     @ViewBuilder func Overlay() -> some View {
         if let altText = attachment.mediaAttachmentDescription {
-            if displayFullAltText {
-                Text("\(altText)")
+            Text("\(textDisplay)")
                     .font(.caption)
                     .padding()
                     .background(.ultraThinMaterial)
-                    .transition(.scale(scale: 0.01, anchor: .bottomLeading))
                     .onTapGesture() {
                         withAnimation {
-                            displayFullAltText = false
+                            if displayFullAltText == true {
+                                displayFullAltText = false
+                                textDisplay = "ALT"
+                            } else {
+                                displayFullAltText = true
+                                textDisplay = altText
+                            }
                         }
                     }
-            } else {
-                Text("ALT")
-                    .font(.caption)
-                    .padding()
-                    .background(.ultraThinMaterial)
-                    //.animation(.easeInOut)
-                    .transition(.scale(scale: 0.01, anchor: .bottomLeading))
-                    .onTapGesture() {
-                        withAnimation {
-                            displayFullAltText = true
-                        }
-                    }
-            }
         } else {
             EmptyView()
         }
     }
+    
+//    @ViewBuilder func Overlay() -> some View {
+//        if let altText = attachment.mediaAttachmentDescription {
+//            if displayFullAltText {
+//                Text("\(altText)")
+//                    .font(.caption)
+//                    .padding()
+//                    .background(.ultraThinMaterial)
+//                    .transition(.scale(scale: 0.01, anchor: .bottomLeading))
+//                    .onTapGesture() {
+//                        withAnimation {
+//                            displayFullAltText = false
+//                        }
+//                    }
+//            } else {
+//                Text("ALT")
+//                    .font(.caption)
+//                    .padding()
+//                    .background(.ultraThinMaterial)
+//                    //.animation(.easeInOut)
+//                    .transition(.scale(scale: 0.01, anchor: .bottomLeading))
+//                    .onTapGesture() {
+//                        withAnimation {
+//                            displayFullAltText = true
+//                        }
+//                    }
+//            }
+//        } else {
+//            EmptyView()
+//        }
+//    }
     
     @ViewBuilder func ImageGetter() -> some View {
         if let url {
