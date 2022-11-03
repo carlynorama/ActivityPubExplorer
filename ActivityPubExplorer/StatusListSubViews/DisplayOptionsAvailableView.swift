@@ -11,7 +11,7 @@ struct DisplayOptionsAvailableView: View {
     let array:[String]
     
     var displayText:String {
-        "Display Checkj: \(array.joined(separator: ", "))"
+        "Display Check: \(array.joined(separator: ", "))"
     }
     
     var body: some View {
