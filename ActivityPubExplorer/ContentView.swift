@@ -27,7 +27,7 @@ struct ContentView: View {
                     
                     if let mediaAttachments = item.mediaAttachments {
                         ForEach(mediaAttachments) { item in
-                            MediaAttachmentView(attachment: item).padding().border(.gray)
+                            MediaAttachmentView(attachment: item).border(.gray)
                         }
                     }
                     
