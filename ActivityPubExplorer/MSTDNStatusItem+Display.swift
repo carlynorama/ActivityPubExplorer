@@ -30,10 +30,6 @@ extension MastodonStatusItem {
                 }
             }
         }
-        
-        //let string = itemsToDisplay.joined(separator: ", ")
-        //print(string)
-        //let returnString = string
         return itemsToDisplay
     }
     
