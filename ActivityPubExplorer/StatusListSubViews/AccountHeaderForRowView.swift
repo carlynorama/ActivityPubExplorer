@@ -12,7 +12,9 @@ struct AccountHeaderForRowView:View {
     let account:Account
     var body: some View {
         HStack {
-            Rectangle().frame(width: 20, height: 20)
+            AccountIconView(account: account)
+                .frame(width: 40)
+                .clipShape(Circle())
             VStack(alignment: .leading) {
                 Text("\(account.displayName)")
                     .font(.headline)
@@ -20,7 +22,9 @@ struct AccountHeaderForRowView:View {
                     .font(.caption)
             }
         }
+
     }
+    
 }
 
 //struct AccountHeaderForRowView_Previews: PreviewProvider {

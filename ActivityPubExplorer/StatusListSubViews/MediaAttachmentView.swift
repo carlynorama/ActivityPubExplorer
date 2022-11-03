@@ -9,15 +9,78 @@ import SwiftUI
 
 struct MediaAttachmentView: View {
     let attachment:MediaAttachment
+    let url:URL?
+    
+    @State var displayFullAltText = false
+    
+    init(attachment:MediaAttachment) {
+        self.attachment = attachment
+        self.url = URL(string: attachment.previewURL)
+    }
     
     var body: some View {
-        HStack(alignment: .top) {
-            Image(systemName: "photo")
-            Text(attachment.url).font(.caption)
+        ImageGetter().overlay(alignment: .bottomLeading, content: Overlay)
+    }
+    
+    @ViewBuilder func Overlay() -> some View {
+        if let altText = attachment.mediaAttachmentDescription {
+            if displayFullAltText {
+                Text("\(altText)")
+                    .font(.caption)
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    .onTapGesture() {
+                        withAnimation {
+                            displayFullAltText = false
+                        }
+                    }
+            } else {
+                Text("ALT")
+                    .font(.caption)
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    .onTapGesture() {
+                        withAnimation {
+                            displayFullAltText = true
+                        }
+                    }
+            }
+        } else {
+            EmptyView()
         }
-        
+    }
+    
+    @ViewBuilder func ImageGetter() -> some View {
+        if let url {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image.resizable()
+                        .aspectRatio(contentMode: .fit)
+                    //.frame(maxWidth: 100, maxHeight: 100)
+                        .border(.orange)
+                case .failure(let error):
+                    let _ = print(url)
+                    let _ = print(error)
+                    Image(systemName: "person.circle.fill")
+                @unknown default:
+                    // Since the AsyncImagePhase enum isn't frozen,
+                    // we need to add this currently unused fallback
+                    // to handle any new cases that might be added
+                    // in the future:
+                    EmptyView()
+                }
+                
+            }
+        } else {
+            Image(systemName: "slash.circle.fill")
+            //Image(systemName: "rectangle.fill.on.rectangle.fill.slash.fill")
+        }
     }
 }
+
 
 struct MediaAttachmentView_Previews: PreviewProvider {
     static var previews: some View {
