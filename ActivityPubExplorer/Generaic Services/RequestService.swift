@@ -20,8 +20,8 @@ enum RequestServiceError:Error, CustomStringConvertible {
 }
 
 actor RequestService {
-    private let decoder = JSONDecoder()
-    private let session = URLSession.shared
+    internal let decoder = JSONDecoder()
+    internal let session = URLSession.shared
     
     func serverHello(from url:URL) async throws -> String {
         let (_, response) = try await session.data(from: url)  //TODO: catch the error here

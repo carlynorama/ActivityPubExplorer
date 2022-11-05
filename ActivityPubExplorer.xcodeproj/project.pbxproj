@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA0E63D62914120D00C4D8EE /* AccountIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E63D52914120D00C4D8EE /* AccountIconView.swift */; };
+		DA7A75F22916E3A80080AD4D /* RequestService+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */; };
 		DAC897D42912D2E9004116EA /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC897D32912D2E9004116EA /* Context.swift */; };
 		DAC897D62912E5E9004116EA /* MoreStatusExamples.json in Resources */ = {isa = PBXBuildFile; fileRef = DAC897D52912E5E9004116EA /* MoreStatusExamples.json */; };
 		DAC897D8291302AA004116EA /* MSTDNStatusItem+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC897D7291302AA004116EA /* MSTDNStatusItem+Display.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		DA0E63D52914120D00C4D8EE /* AccountIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountIconView.swift; sourceTree = "<group>"; };
+		DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestService+JSON.swift"; sourceTree = "<group>"; };
 		DA7CFCE02910839F001A6E80 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		DAC897D32912D2E9004116EA /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		DAC897D52912E5E9004116EA /* MoreStatusExamples.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MoreStatusExamples.json; sourceTree = "<group>"; };
@@ -77,6 +79,18 @@
 			path = SampleContent;
 			sourceTree = "<group>";
 		};
+		DA7A75F32916E7BF0080AD4D /* Generaic Services */ = {
+			isa = PBXGroup;
+			children = (
+				DAF8A6FD290F667600E093C0 /* HTMLSnippetRender.swift */,
+				DAF8A6F6290F110F00E093C0 /* MastodonAPI.swift */,
+				DAF8A6F4290F0CBF00E093C0 /* API.swift */,
+				DAF8A6F2290F0C5600E093C0 /* RequestService.swift */,
+				DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */,
+			);
+			path = "Generaic Services";
+			sourceTree = "<group>";
+		};
 		DAC897E229134D50004116EA /* StatusListSubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,12 +126,9 @@
 			children = (
 				DA0E63D729142AB500C4D8EE /* SampleContent */,
 				DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */,
-				DAF8A6F2290F0C5600E093C0 /* RequestService.swift */,
+				DA7A75F32916E7BF0080AD4D /* Generaic Services */,
 				DAF8A6FB290F224100E093C0 /* MSTDNStatusItem.swift */,
 				DAC897D7291302AA004116EA /* MSTDNStatusItem+Display.swift */,
-				DAF8A6FD290F667600E093C0 /* HTMLSnippetRender.swift */,
-				DAF8A6F4290F0CBF00E093C0 /* API.swift */,
-				DAF8A6F6290F110F00E093C0 /* MastodonAPI.swift */,
 				DAF8A6AF290D7DA500E093C0 /* ContentView.swift */,
 				DAC897E229134D50004116EA /* StatusListSubViews */,
 				DAF8A6F8290F1E7500E093C0 /* ActivityPubGeneral */,
@@ -235,6 +246,7 @@
 				DAF8A6AE290D7DA500E093C0 /* ActivityPubExplorerApp.swift in Sources */,
 				DAC897E12913481B004116EA /* DisplayOptionsAvailableView.swift in Sources */,
 				DAF8A6C1290D82C500E093C0 /* APPerson.swift in Sources */,
+				DA7A75F22916E3A80080AD4D /* RequestService+JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

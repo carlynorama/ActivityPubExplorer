@@ -13,9 +13,9 @@ struct MastodonAPI {
     let requestService:RequestService = RequestService()
     
     
-    public func publicTimeline(itemCount:Int = 20) async throws -> [MSTDNStatusItem] {
+    public func publicTimeline(itemCount:Int = 20) async throws -> [MSTDNStatusItem?] {
             let url = try API.urlFrom(server: server, endpoint: publicTimelineEndpoint(count: itemCount))
-            let result = try await requestService.fetchValue(ofType: [MSTDNStatusItem].self, from: url)
+            let result = try await requestService.fetchValue(ofType: [MSTDNStatusItem?].self, from: url)
             return result
     }
     
