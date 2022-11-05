@@ -68,8 +68,10 @@ WARNING: Using `NSAttributedStrings` in a scrolling view, even when passed off t
 
 ## Release History
 
-* 0.0.0
-    * Current State. Wouldn't exactly call it "released".  
+Current State: Wouldn't exactly call it "released".
+
+* 0.0.0.0 - "first stable"
+    *  current on main 
 
 
 
