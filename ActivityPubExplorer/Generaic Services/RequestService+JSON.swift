@@ -24,7 +24,6 @@ extension RequestService {
     
     func fetchDictionary(from url:URL) async throws -> [String: Any]? {
         let data = try await httpFetch(from: url)
-        
         do {
             let result = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
             print(result)
@@ -37,7 +36,6 @@ extension RequestService {
     
     func fetchValue<SomeDecodable: Decodable>(ofType:SomeDecodable.Type, from url:URL) async throws -> SomeDecodable {
         let data = try await httpFetch(from: url)
-        
         let decoded = try decoder.decode(SomeDecodable.self, from: data)
         return decoded
     }
@@ -65,7 +63,6 @@ extension RequestService {
     
     func fetchCollectionOfOptionals<SomeDecodable: Decodable>(ofType:SomeDecodable.Type, from url:URL) async throws -> [SomeDecodable?] {
         let data = try await httpFetch(from: url)
-        
         let results = try JSONDecoder().decode([NullableObject<SomeDecodable>].self, from: data)
         return results.map { $0.value }
     }
@@ -74,10 +71,9 @@ extension RequestService {
     func verboseDecode<T:Decodable>(data:Data) -> T? {
     //    decoder.keyDecodingStrategy = .convertFromSnakeCase
       do {
+          
         let object = try decoder.decode(T.self, from: data)
-        
         print(object)
-        
         return object
 
       } catch DecodingError.dataCorrupted(let context) {
