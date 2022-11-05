@@ -13,10 +13,15 @@ struct MastodonAPI {
     let requestService:RequestService = RequestService()
     
     
-    public func publicTimeline(itemCount:Int = 20) async throws -> [MSTDNStatusItem?] {
+    public func publicTimeline(itemCount:Int = 20) async throws -> [MSTDNStatusItem] {
             let url = try API.urlFrom(server: server, endpoint: publicTimelineEndpoint(count: itemCount))
-            let result = try await requestService.fetchValue(ofType: [MSTDNStatusItem?].self, from: url)
-            return result
+        
+            //let result = try await requestService.fetchValue(ofType: [MSTDNStatusItem?].self, from: url)
+        print("trying to fetch store")
+        let result = try await requestService.fetchCollectionOfOptionals(ofType: MSTDNStatusItem.self, from: url)
+        let validOnly = result.compactMap { $0 }
+        print("\(result.count - validOnly.count) items could not be rendered")
+        return validOnly
     }
     
     public func tagTimeline(tag:String, itemCount:Int = 1) async {
