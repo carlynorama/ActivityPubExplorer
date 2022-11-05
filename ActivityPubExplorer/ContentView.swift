@@ -13,7 +13,7 @@ import SwiftUI
 struct ContentView: View {
     var mastodonInstance = MastodonAPI(server: myTestServer)
     
-    @State var list:[MastodonStatusItem] = []
+    @State var list:[MSTDNStatusItem] = []
     
     var body: some View {
             List(list, id:\.id) { item in
@@ -46,7 +46,7 @@ struct ContentView: View {
         }
     }
     
-    func printString(_ item:MastodonStatusItem) -> String? {
+    func printString(_ item:MSTDNStatusItem) -> String? {
         print(item.content)
         return item.content
     }
@@ -64,7 +64,7 @@ struct ContentView: View {
 }
 
 struct StatusItemRowView: View {
-    let item:MastodonStatusItem
+    let item:MSTDNStatusItem
     var body: some View {
         VStack(alignment: .leading) {
             Text("\(item.account.username)")

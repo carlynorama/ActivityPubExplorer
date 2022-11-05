@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - MastodonStatusItem
-struct MastodonStatusItem: Codable, Identifiable {
+struct MSTDNStatusItem: Codable, Identifiable {
     //Appears to be always
     let id, createdAt: String
     let account: Account

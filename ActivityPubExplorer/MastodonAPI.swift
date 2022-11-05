@@ -13,16 +13,16 @@ struct MastodonAPI {
     let requestService:RequestService = RequestService()
     
     
-    public func publicTimeline(itemCount:Int = 20) async throws -> [MastodonStatusItem] {
+    public func publicTimeline(itemCount:Int = 20) async throws -> [MSTDNStatusItem] {
             let url = try API.urlFrom(server: server, endpoint: publicTimelineEndpoint(count: itemCount))
-            let result = try await requestService.fetchValue(ofType: [MastodonStatusItem].self, from: url)
+            let result = try await requestService.fetchValue(ofType: [MSTDNStatusItem].self, from: url)
             return result
     }
     
     public func tagTimeline(tag:String, itemCount:Int = 1) async {
         do {
             let url = try API.urlFrom(server: server, endpoint: singleTagEndpoint(for: tag, count: itemCount))
-            let result = try await requestService.fetchValue(ofType: [MastodonStatusItem].self, from: url)
+            let result = try await requestService.fetchValue(ofType: [MSTDNStatusItem].self, from: url)
             print(result)
         } catch {
             print(error)

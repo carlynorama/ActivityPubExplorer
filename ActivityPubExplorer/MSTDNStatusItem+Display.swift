@@ -8,7 +8,7 @@
 import Foundation
 
 
-extension MastodonStatusItem {
+extension MSTDNStatusItem {
     var contentText:AttributedString {
         if var attributedTest = self.content.parseAsHTML() {
             attributedTest.font = .body

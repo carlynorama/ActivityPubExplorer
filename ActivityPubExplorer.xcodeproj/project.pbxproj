@@ -26,7 +26,7 @@
 		DAF8A6F5290F0CBF00E093C0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8A6F4290F0CBF00E093C0 /* API.swift */; };
 		DAF8A6F7290F110F00E093C0 /* MastodonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8A6F6290F110F00E093C0 /* MastodonAPI.swift */; };
 		DAF8A6FA290F21DB00E093C0 /* MSTDNStatusExample.json in Resources */ = {isa = PBXBuildFile; fileRef = DAF8A6F9290F21DB00E093C0 /* MSTDNStatusExample.json */; };
-		DAF8A6FC290F224100E093C0 /* MastodonStatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8A6FB290F224100E093C0 /* MastodonStatusItem.swift */; };
+		DAF8A6FC290F224100E093C0 /* MSTDNStatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8A6FB290F224100E093C0 /* MSTDNStatusItem.swift */; };
 		DAF8A6FE290F667600E093C0 /* HTMLSnippetRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8A6FD290F667600E093C0 /* HTMLSnippetRender.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,7 @@
 		DAF8A6F4290F0CBF00E093C0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		DAF8A6F6290F110F00E093C0 /* MastodonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MastodonAPI.swift; sourceTree = "<group>"; };
 		DAF8A6F9290F21DB00E093C0 /* MSTDNStatusExample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MSTDNStatusExample.json; sourceTree = "<group>"; };
-		DAF8A6FB290F224100E093C0 /* MastodonStatusItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MastodonStatusItem.swift; sourceTree = "<group>"; };
+		DAF8A6FB290F224100E093C0 /* MSTDNStatusItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSTDNStatusItem.swift; sourceTree = "<group>"; };
 		DAF8A6FD290F667600E093C0 /* HTMLSnippetRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLSnippetRender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +113,7 @@
 				DA0E63D729142AB500C4D8EE /* SampleContent */,
 				DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */,
 				DAF8A6F2290F0C5600E093C0 /* RequestService.swift */,
-				DAF8A6FB290F224100E093C0 /* MastodonStatusItem.swift */,
+				DAF8A6FB290F224100E093C0 /* MSTDNStatusItem.swift */,
 				DAC897D7291302AA004116EA /* MSTDNStatusItem+Display.swift */,
 				DAF8A6FD290F667600E093C0 /* HTMLSnippetRender.swift */,
 				DAF8A6F4290F0CBF00E093C0 /* API.swift */,
@@ -230,7 +230,7 @@
 				DAC897DA2913327C004116EA /* CardView.swift in Sources */,
 				DAF8A6F5290F0CBF00E093C0 /* API.swift in Sources */,
 				DAF8A6C3290D831400E093C0 /* APObject.swift in Sources */,
-				DAF8A6FC290F224100E093C0 /* MastodonStatusItem.swift in Sources */,
+				DAF8A6FC290F224100E093C0 /* MSTDNStatusItem.swift in Sources */,
 				DAC897DF29133EC3004116EA /* AccountHeaderForRowView.swift in Sources */,
 				DAF8A6AE290D7DA500E093C0 /* ActivityPubExplorerApp.swift in Sources */,
 				DAC897E12913481B004116EA /* DisplayOptionsAvailableView.swift in Sources */,
