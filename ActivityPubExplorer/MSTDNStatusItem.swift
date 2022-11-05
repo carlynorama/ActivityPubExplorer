@@ -15,11 +15,12 @@ struct MSTDNStatusItem: Codable, Identifiable {
     let account: Account
     let content: String
     let sensitive: Bool
-    let spoilerText, visibility, language: String
+    let spoilerText, visibility: String
     let repliesCount, reblogsCount, favouritesCount: Int
     let uri, url: String
     
     //Appears to be optional
+    let language: String?
     let inReplyToID, inReplyToAccountID: String?
     let favourited, reblogged, muted, bookmarked: Bool?
     let reblog: String?
