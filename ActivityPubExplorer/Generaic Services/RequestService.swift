@@ -23,6 +23,8 @@ actor RequestService {
     internal let decoder = JSONDecoder()
     internal let session = URLSession.shared
     
+    //MARK: - Level One Fetch Requests (Hello World)
+    
     func serverHello(from url:URL) async throws -> String {
         let (_, response) = try await session.data(from: url)  //TODO: catch the error here
         //print(response)
@@ -38,46 +40,23 @@ actor RequestService {
         return string
     }
     
-    func fetchDictionary(from url:URL) async throws -> [String: Any]? {
-        let (data, response) = try await session.data(from: url)  //TODO: catch the error here
-//        print(response)
-        guard checkForValidHTTP(response).isValid else {
-            throw RequestServiceError("Not valid HTTP")
-        }
-        do {
-            let result = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-            print(result)
-            return result as? [String:AnyObject]
-        } catch {
-            print(error)
-            return nil
-        }
-        
-    }
     
-    func fetchValue<SomeDecodable: Decodable>(ofType:SomeDecodable.Type, from url:URL) async throws -> SomeDecodable {
+    //MARK: - Generic HTTP Handling
+    internal func httpFetch(from url:URL, debugLog:Bool = false) async throws -> Data {
         let (data, response) = try await session.data(from: url)  //TODO: catch the error here
        //print(response)
         guard checkForValidHTTP(response).isValid else {
             throw RequestServiceError("Not valid HTTP")
         }
-        //let string = String(decoding: data, as: UTF8.self)
-        //print(string)
         
-        let decoded = try decoder.decode(SomeDecodable.self, from: data)
-        return decoded
+        if debugLog {
+            let string = String(decoding: data, as: UTF8.self)
+            print(string)
+        }
+        return data
     }
     
-    func fetchTransformedValue<SomeDecodable: Decodable, Transformed>(
-        ofType: SomeDecodable.Type,
-        from url:URL,
-        transform: @escaping (SomeDecodable) throws -> Transformed
-    ) async throws -> Transformed {
-        let decoded = try await fetchValue(ofType: ofType, from: url)
-        return try transform(decoded)
-    }
-    
-    func checkForValidHTTP(_ response:URLResponse) -> (isValid:Bool, mimeType:String?) {
+    internal func checkForValidHTTP(_ response:URLResponse) -> (isValid:Bool, mimeType:String?) {
         guard let httpResponse = response as? HTTPURLResponse,
                     (200...299).contains(httpResponse.statusCode) else {
                     self.handleServerError(response)
@@ -87,7 +66,7 @@ actor RequestService {
         return (true, httpResponse.mimeType)
     }
     
-    func handleServerError(_ response:URLResponse) {
+    internal func handleServerError(_ response:URLResponse) {
         print(response)
     }
     

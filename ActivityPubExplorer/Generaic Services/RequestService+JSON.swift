@@ -7,24 +7,71 @@
 
 import Foundation
 
-//https://github.com/twostraws/HackingWithSwift/blob/cedfe0f41560ea0a68623b18346b53844cb75542/Classic/Project38/Project38/SwiftyJSON.swift
+fileprivate struct NullableObject<Base: Decodable>: Decodable {
+    public let value: Base?
 
-private extension RequestService {
-    
-    func fetchOptional<SomeDecodable: Decodable>(ofType:SomeDecodable.Type, from url:URL) async throws -> SomeDecodable? {
-        let (data, response) = try await session.data(from: url)  //TODO: catch the error here
-       //print(response)
-        guard checkForValidHTTP(response).isValid else {
-            throw RequestServiceError("Not valid HTTP")
+    public init(from decoder: Decoder) throws {
+        do {
+            let container = try decoder.singleValueContainer()
+            self.value = try container.decode(Base.self)
+        } catch {
+            self.value = nil
         }
-        //let string = String(decoding: data, as: UTF8.self)
-        //print(string)
+    }
+}
+
+extension RequestService {
+    
+    func fetchDictionary(from url:URL) async throws -> [String: Any]? {
+        let data = try await httpFetch(from: url)
         
-        return decodeResult(data: data)
+        do {
+            let result = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+            print(result)
+            return result as? [String:AnyObject]
+        } catch {
+            print(error)
+            return nil
+        }
     }
     
-    //Ed
-    func decodeResult<T:Decodable>(data:Data) -> T? {
+    func fetchValue<SomeDecodable: Decodable>(ofType:SomeDecodable.Type, from url:URL) async throws -> SomeDecodable {
+        let data = try await httpFetch(from: url)
+        
+        let decoded = try decoder.decode(SomeDecodable.self, from: data)
+        return decoded
+    }
+    
+    func fetchTransformedValue<SomeDecodable: Decodable, Transformed>(
+        ofType: SomeDecodable.Type,
+        from url:URL,
+        transform: @escaping (SomeDecodable) throws -> Transformed
+    ) async throws -> Transformed {
+        let decoded = try await fetchValue(ofType: ofType, from: url)
+        return try transform(decoded)
+    }
+    
+    func fetchOptional<SomeDecodable: Decodable>(ofType:SomeDecodable.Type, from url:URL) async throws -> SomeDecodable? {
+        let data = try await httpFetch(from: url)
+        let result = try JSONDecoder().decode(NullableObject<SomeDecodable>.self, from: data)
+        return result.value
+    }
+    
+    func fetchCollection<SomeDecodable: Decodable>(ofType:SomeDecodable.Type, from url:URL) async throws -> [SomeDecodable?] {
+        let data = try await httpFetch(from: url)
+        let results = try JSONDecoder().decode([NullableObject<SomeDecodable>].self, from: data)
+        return results.compactMap { $0.value }
+    }
+    
+    func fetchCollectionOfOptionals<SomeDecodable: Decodable>(ofType:SomeDecodable.Type, from url:URL) async throws -> [SomeDecodable?] {
+        let data = try await httpFetch(from: url)
+        
+        let results = try JSONDecoder().decode([NullableObject<SomeDecodable>].self, from: data)
+        return results.map { $0.value }
+    }
+    
+    //from Ed
+    func verboseDecode<T:Decodable>(data:Data) -> T? {
     //    decoder.keyDecodingStrategy = .convertFromSnakeCase
       do {
         let object = try decoder.decode(T.self, from: data)
@@ -50,6 +97,4 @@ private extension RequestService {
 
       return nil
     }
-
-    
 }
