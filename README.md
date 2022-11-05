@@ -70,8 +70,8 @@ WARNING: Using `NSAttributedStrings` in a scrolling view, even when passed off t
 
 Current State: Wouldn't exactly call it "released".
 
-* 0.0.0.0 - "first stable"
-    *  current on main 
+* 0.0.0.0 - "hello_world"
+    *  current state of main
 
 
 
