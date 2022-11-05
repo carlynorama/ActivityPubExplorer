@@ -53,7 +53,7 @@ struct ContentView: View {
     
     func testTimeLine() async {
         do {
-            list = try await mastodonInstance.publicTimeline()
+            list = try await mastodonInstance.publicTimeline().compactMap{ $0 }
             print("update complete")
         }catch {
             print(error)
