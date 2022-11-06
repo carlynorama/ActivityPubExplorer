@@ -7,14 +7,20 @@
 
 import Foundation
 
-struct MastodonAPI {
-    typealias Endpoint = API.Endpoint
-    let server:API.Server
+struct MastodonAPIServer {
+    typealias Endpoint = APIServer.Endpoint
+    let server:APIServer.Location
     let requestService:RequestService = RequestService()
+    
+    var name:String {
+        server.name
+    }
+    
+    //TODO: What happens in the app if the network connection fails? 
     
     
     public func publicTimeline(itemCount:Int = 20) async throws -> [MSTDNStatusItem] {
-            let url = try API.urlFrom(server: server, endpoint: publicTimelineEndpoint(count: itemCount))
+            let url = try APIServer.urlFrom(server: server, endpoint: publicTimelineEndpoint(count: itemCount))
         
             //let result = try await requestService.fetchValue(ofType: [MSTDNStatusItem?].self, from: url)
         print("trying to fetch store")
@@ -26,7 +32,7 @@ struct MastodonAPI {
     
     public func tagTimeline(tag:String, itemCount:Int = 1) async {
         do {
-            let url = try API.urlFrom(server: server, endpoint: singleTagEndpoint(for: tag, count: itemCount))
+            let url = try APIServer.urlFrom(server: server, endpoint: singleTagEndpoint(for: tag, count: itemCount))
             let result = try await requestService.fetchValue(ofType: [MSTDNStatusItem].self, from: url)
             print(result)
         } catch {
@@ -36,7 +42,7 @@ struct MastodonAPI {
     
     public func getFollowing(for account:String) async {
         do {
-            let url = try API.urlFrom(server: server, path: pathForJSON(account: account, forKey: "following"), usingAPIBase: false)
+            let url = try APIServer.urlFrom(server: server, path: pathForJSON(account: account, forKey: "following"), usingAPIBase: false)
             let result = try await requestService.fetchRawString(from: url)
             print(result)
         } catch {

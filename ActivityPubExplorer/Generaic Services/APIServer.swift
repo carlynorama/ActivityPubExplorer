@@ -20,13 +20,13 @@ enum APIError: Error, CustomStringConvertible {
 }
 
 
-struct API {
+struct APIServer {
     
     //TODO: Sanitize Paths. Look for // and whether con cat strings have /
     
-    struct Server {
+    struct Location {
         let scheme:String
-        let host:String
+        let host:URL
         let apiBase:String?
     }
     
@@ -35,10 +35,10 @@ struct API {
         let queryItems: [URLQueryItem]
     }
     
-    static func urlFrom(server:Server, path:String, usingAPIBase:Bool = false) throws -> URL {
+    static func urlFrom(server:Location, path:String, usingAPIBase:Bool = false) throws -> URL {
         var components = URLComponents()
         components.scheme = server.scheme
-        components.host = server.host
+        components.host = server.host.absoluteString
         if server.apiBase != nil && usingAPIBase {
             components.path = server.apiBase! + path
         } else {
@@ -52,10 +52,10 @@ struct API {
         return url
     }
     
-    static func urlFrom(server: Server, endpoint:Endpoint, usingAPIBase:Bool = true) throws -> URL {
+    static func urlFrom(server: Location, endpoint:Endpoint, usingAPIBase:Bool = true) throws -> URL {
         var components = URLComponents()
         components.scheme = server.scheme
-        components.host = server.host
+        components.host = server.host.absoluteString
         if server.apiBase != nil && usingAPIBase {
             components.path = server.apiBase! + endpoint.path
         } else {
@@ -73,4 +73,21 @@ struct API {
         return url
     }
     
+}
+
+
+extension APIServer.Location {
+    
+    init?(host:String, apiBase:String?) {
+        guard let url = URL(string: host) else {
+            return nil
+        }
+        self.host = url
+        self.scheme = "https"
+        self.apiBase = apiBase
+    }
+    
+    var name:String {
+        self.host.absoluteString
+    }
 }
