@@ -62,7 +62,7 @@ extension RequestService {
     }
     
     func fetchCollectionOfOptionals<SomeDecodable: Decodable>(ofType:SomeDecodable.Type, from url:URL) async throws -> [SomeDecodable?] {
-        let data = try await httpFetch(from: url)
+        let data = try await httpFetch(from: url, debugLog: true)
         let results = try JSONDecoder().decode([NullableObject<SomeDecodable>].self, from: data)
         return results.map { $0.value }
     }
