@@ -39,7 +39,10 @@ None of this should be used as an example of best practices.
 
 ### Working with the JSON
 - https://swiftsenpai.com/testing/implemented-http-request-helper-without-server/
+- SAMPLE CODE: https://developer.apple.com/documentation/foundation/archives_and_serialization/using_json_with_custom_types
 - https://jsonformatter.org/
+- https://github.com/apple/swift-corelibs-foundation/issues/4414 (corelib, should failing be allowed convo)
+- https://kean.blog/post/codable-tips-and-tricks
 
 ### Rendering HTML in the UI
 WARNING: Using `NSAttributedStrings` in a scrolling view, even when passed off to an `AttributedString` can crash the program if an .id(UUID()) is not used on the view. Which view need the `.id` exactly seems to change depending on the exact scenario.  

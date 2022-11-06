@@ -20,7 +20,7 @@ struct MSTDNStatusItem: Codable, Identifiable {
     let uri, url: String
     
     //Appears to be optional
-    let language: String
+    let language: String?
     let inReplyToID, inReplyToAccountID: String?
     let favourited, reblogged, muted, bookmarked: Bool?
     let reblog: String?
