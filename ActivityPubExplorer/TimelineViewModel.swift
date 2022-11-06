@@ -19,8 +19,12 @@ final class TimelineViewModel:ObservableObject {
     
     func testTimeLine() async {
         do {
-            displayItems = try await displayServer.publicTimeline().compactMap{ $0 }
+            let tmp:[MSTDNStatusItem] = try await displayServer.publicTimeline().compactMap{ $0 }
+            await MainActor.run {
+                displayItems = tmp
+            }
             print("update complete")
+            
         }catch {
             print(error)
         }
@@ -29,11 +33,15 @@ final class TimelineViewModel:ObservableObject {
     }
     
     func updateViewInstance(newLocation:String) {
-        if let newServer = APIServer.Location(host: newLocation, apiBase: displayServer.server.scheme) {
+        
+        if let newServer = APIServer.Location(host: newLocation, apiBase: displayServer.server.apiBase) {
+            print("absolute:\(newServer.host.absoluteString), relative:\(newServer.host.absoluteString), ")
+            displayItems = []
             displayServer = MastodonAPIServer(server: newServer)
-            
+            Task { await testTimeLine() }
         }
         
+        //testTimeLine()
         //In the other version there was a cancellable task handling server requests that should be here. 
     }
     

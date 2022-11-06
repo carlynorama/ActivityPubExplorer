@@ -6,10 +6,10 @@
 //
 
 import Foundation
-
+//apiBase: "/api/v1"
 struct MastodonAPIServer {
     typealias Endpoint = APIServer.Endpoint
-    let server:APIServer.Location
+    let server:APIServer.Location  //
     let requestService:RequestService = RequestService()
     
     var name:String {

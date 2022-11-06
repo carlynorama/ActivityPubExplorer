@@ -56,6 +56,10 @@ struct APIServer {
         var components = URLComponents()
         components.scheme = server.scheme
         components.host = server.host.absoluteString
+        print("host:\(components.host)")
+        
+        //print("apiBase:\(components.host)")
+        
         if server.apiBase != nil && usingAPIBase {
             components.path = server.apiBase! + endpoint.path
         } else {
@@ -67,6 +71,7 @@ struct APIServer {
         }
         
         guard let url = components.url else {
+            print("components:\(components)")
             throw APIError("Invalid url for endpoint")
         }
         print(url)

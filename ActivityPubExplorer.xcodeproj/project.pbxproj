@@ -20,6 +20,7 @@
 		DAC897E12913481B004116EA /* DisplayOptionsAvailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC897E02913481B004116EA /* DisplayOptionsAvailableView.swift */; };
 		DACA1BDE29183E1C00B95276 /* PublicTimelineContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACA1BDD29183E1C00B95276 /* PublicTimelineContainerView.swift */; };
 		DACA1BE029183F8800B95276 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACA1BDF29183F8800B95276 /* TimelineViewModel.swift */; };
+		DACA1BE229184E0200B95276 /* ServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACA1BE129184E0200B95276 /* ServerTests.swift */; };
 		DAF8A6AE290D7DA500E093C0 /* ActivityPubExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */; };
 		DAF8A6B0290D7DA500E093C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8A6AF290D7DA500E093C0 /* ContentView.swift */; };
 		DAF8A6B2290D7DA600E093C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF8A6B1290D7DA600E093C0 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		DAC897E02913481B004116EA /* DisplayOptionsAvailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayOptionsAvailableView.swift; sourceTree = "<group>"; };
 		DACA1BDD29183E1C00B95276 /* PublicTimelineContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTimelineContainerView.swift; sourceTree = "<group>"; };
 		DACA1BDF29183F8800B95276 /* TimelineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
+		DACA1BE129184E0200B95276 /* ServerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerTests.swift; sourceTree = "<group>"; };
 		DAF8A6AA290D7DA500E093C0 /* ActivityPubExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityPubExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPubExplorerApp.swift; sourceTree = "<group>"; };
 		DAF8A6AF290D7DA500E093C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				DAF8A6F6290F110F00E093C0 /* MastodonAPIServer.swift */,
 				DAC897D7291302AA004116EA /* MSTDNStatusItem+Display.swift */,
 				DA7A7615291741AC0080AD4D /* MSTDN+Emoji.swift */,
+				DACA1BE129184E0200B95276 /* ServerTests.swift */,
 			);
 			path = MSTDN;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				DAF8A6BD290D7E3100E093C0 /* APSampleData.swift in Sources */,
 				DACA1BE029183F8800B95276 /* TimelineViewModel.swift in Sources */,
 				DAC897DA2913327C004116EA /* CardView.swift in Sources */,
+				DACA1BE229184E0200B95276 /* ServerTests.swift in Sources */,
 				DAF8A6F5290F0CBF00E093C0 /* APIServer.swift in Sources */,
 				DAF8A6C3290D831400E093C0 /* APObject.swift in Sources */,
 				DAF8A6FC290F224100E093C0 /* MSTDNStatusItem.swift in Sources */,
