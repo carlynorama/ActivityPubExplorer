@@ -13,7 +13,7 @@ let myTestServer:APIServer.Location = APIServer.Location(host: "social.cozytroni
 struct ActivityPubExplorerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FeedVerticalView()
         }
     }
 }

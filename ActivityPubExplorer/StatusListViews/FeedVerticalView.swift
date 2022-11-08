@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct ContentView: View {
+struct FeedVerticalView: View {
     @StateObject var timelineVM = TimelineViewModel()
 
     
@@ -18,7 +18,9 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-
+            Group {
+                Text("Timeline")
+            }
             
             Group {
                 Text("\(queryType) on \(timelineVM.displayServer.name)").font(.caption)
