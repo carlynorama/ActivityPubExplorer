@@ -49,11 +49,19 @@ struct InstanceStatsView: View {
     let profile:MSTDNInstanceProfile
     
     var body: some View {
-        Grid(alignment: .leading) {
-            GridRow {
-                Text("Version")
-                Text(profile.version)
+        Form {
+            Section("Information") {
+                LabeledContent("Name", value: profile.title)
+                LabeledContent("Member Count", value: profile.stats.userCount, format: .number)
+                
             }
+//            if !profile .isEmpty {
+//                Section("Pets") {
+//                    ForEach(pet) { pet in
+//                        LabeledContent(pet.species, value: pet.name)
+//                    }
+//                }
+//            }
         }
     }
 }
