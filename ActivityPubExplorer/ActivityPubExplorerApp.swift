@@ -13,7 +13,8 @@ let myTestServer:APIServer.Location = APIServer.Location(host: "social.cozytroni
 struct ActivityPubExplorerApp: App {
     var body: some Scene {
         WindowGroup {
-            FeedVerticalView()
+            InstanceMetricsView(instance: MastodonAPIServer(server: myTestServer))
+            //FeedVerticalView()
         }
     }
 }

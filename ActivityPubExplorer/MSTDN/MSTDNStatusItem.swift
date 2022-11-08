@@ -25,7 +25,7 @@ struct MSTDNStatusItem: Codable, Identifiable {
     let favourited, reblogged, muted, bookmarked: Bool?
     let reblog: String?
     let application: Application?
-    let mediaAttachments: [MediaAttachment]?
+    let mediaAttachments: [ItemMediaAttachment]?
     let mentions, tags, emojis: [JSONAny]?
     let card: Card?
     let poll: Poll?
@@ -118,8 +118,8 @@ struct Card: Codable {
 }
 
 // MARK: - MediaAttachments
-typealias AttachmentArray = [MediaAttachment]
-struct MediaAttachments: Codable {
+typealias AttachmentArray = [ItemMediaAttachment]
+struct ItemMediaAttachments: Codable {
     let attachments: AttachmentArray
 
     enum CodingKeys: String, CodingKey {
@@ -128,7 +128,7 @@ struct MediaAttachments: Codable {
 }
 
 // MARK: - MediaAttachment
-struct MediaAttachment: Codable,Identifiable {
+struct ItemMediaAttachment: Codable,Identifiable {
     let id, type: String
     let url, previewURL, remoteURL: String
     let previewRemoteURL, textURL: JSONNull?

@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct MediaAttachmentView: View {
-    let attachment:MediaAttachment
+    let attachment:ItemMediaAttachment
     let url:URL?
     
     @State var displayFullAltText = false
     @State var textDisplay = "ALT"
     
-    init(attachment:MediaAttachment) {
+    init(attachment:ItemMediaAttachment) {
         self.attachment = attachment
         self.url = URL(string: attachment.previewURL)
     }
@@ -112,13 +112,13 @@ struct MediaAttachmentView: View {
 
 struct MediaAttachmentView_Previews: PreviewProvider {
     static var previews: some View {
-        MediaAttachmentView(attachment: MediaAttachment.example)
+        MediaAttachmentView(attachment: ItemMediaAttachment.example)
     }
 }
 
-extension MediaAttachment {
-    static var example:MediaAttachment {
-        MediaAttachment(
+extension ItemMediaAttachment {
+    static var example:ItemMediaAttachment {
+        ItemMediaAttachment(
             id: "109275885117921166",
             type: "image",
             url: "https://cdn.masto.host/socialcozytronicscom/cache/media_attachments/files/109/275/885/117/921/166/original/67813195cca6d7d0.png",

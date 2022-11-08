@@ -16,8 +16,45 @@ struct MastodonAPIServer {
         server.name
     }
     
-    //TODO: What happens in the app if the network connection fails? 
+    //TODO: What happens in the app if the network connection fails?
     
+    //MARK: - Instance Data
+    public func fetchProfile() async -> MSTDNInstanceProfile? {
+        do {
+            let url = try APIServer.urlFrom(server: server, path: "/instance", usingAPIBase: true)
+            print("URL for Instance Info: \(url)")
+            let result = try await requestService.fetchValue(ofType: MSTDNInstanceProfile.self, from: url)
+            print(result)
+            return result
+        } catch {
+            print(error)
+        }
+        return nil 
+    }
+    
+    public func trends() {
+        
+    }
+    
+    public func peers() {
+        
+    }
+    
+    public func activity() {
+        
+    }
+    
+    public func directory() {
+        
+    }
+    
+    public func emojis() {
+        
+    }
+    
+    
+    
+    //MARK: - Timelines
     
     public func publicTimeline(itemCount:Int = 20) async throws -> [MSTDNStatusItem] {
             let url = try APIServer.urlFrom(server: server, endpoint: publicTimelineEndpoint(count: itemCount))
@@ -40,6 +77,9 @@ struct MastodonAPIServer {
         }
     }
     
+    //MARK: Status item detals
+    
+    //MARK: - Account Information
     public func getFollowing(for account:String) async {
         do {
             let url = try APIServer.urlFrom(server: server, path: pathForJSON(account: account, forKey: "following"), usingAPIBase: false)
