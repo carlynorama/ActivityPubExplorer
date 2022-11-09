@@ -103,7 +103,7 @@
 			path = SampleContent;
 			sourceTree = "<group>";
 		};
-		DA7A75F32916E7BF0080AD4D /* Generaic Services */ = {
+		DA7A75F32916E7BF0080AD4D /* Generic Services */ = {
 			isa = PBXGroup;
 			children = (
 				DAF8A6FD290F667600E093C0 /* HTMLSnippetRender.swift */,
@@ -111,7 +111,7 @@
 				DAF8A6F2290F0C5600E093C0 /* RequestService.swift */,
 				DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */,
 			);
-			path = "Generaic Services";
+			path = "Generic Services";
 			sourceTree = "<group>";
 		};
 		DA7A76142917416A0080AD4D /* MSTDN */ = {
@@ -168,7 +168,7 @@
 				DA80ADF0291C0E86009E6AE3 /* StringDictionaryDisplay.swift */,
 				DA0E63D729142AB500C4D8EE /* SampleContent */,
 				DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */,
-				DA7A75F32916E7BF0080AD4D /* Generaic Services */,
+				DA7A75F32916E7BF0080AD4D /* Generic Services */,
 				DA7A76142917416A0080AD4D /* MSTDN */,
 				DAC897E229134D50004116EA /* StatusListViews */,
 				DAF8A6F8290F1E7500E093C0 /* ActivityPubGeneral */,
