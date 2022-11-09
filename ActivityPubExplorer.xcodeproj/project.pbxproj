@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DA0E63D62914120D00C4D8EE /* AccountIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E63D52914120D00C4D8EE /* AccountIconView.swift */; };
 		DA2C871D291C0F7700EC19D5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = DA2C871C291C0F7700EC19D5 /* OrderedCollections */; };
+		DA2C871F291C15A600EC19D5 /* instance_social.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2C871E291C15A600EC19D5 /* instance_social.json */; };
+		DA2C8721291C3F5800EC19D5 /* ExampleInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C8720291C3F5800EC19D5 /* ExampleInstance.swift */; };
 		DA7A75F22916E3A80080AD4D /* RequestService+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */; };
 		DA7A7613291736350080AD4D /* more.json in Resources */ = {isa = PBXBuildFile; fileRef = DA7A7612291736350080AD4D /* more.json */; };
 		DA7A7616291741AC0080AD4D /* MSTDN+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A7615291741AC0080AD4D /* MSTDN+Emoji.swift */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		DA0E63D52914120D00C4D8EE /* AccountIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountIconView.swift; sourceTree = "<group>"; };
+		DA2C871E291C15A600EC19D5 /* instance_social.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = instance_social.json; sourceTree = "<group>"; };
+		DA2C8720291C3F5800EC19D5 /* ExampleInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleInstance.swift; sourceTree = "<group>"; };
 		DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestService+JSON.swift"; sourceTree = "<group>"; };
 		DA7A7612291736350080AD4D /* more.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = more.json; sourceTree = "<group>"; };
 		DA7A7615291741AC0080AD4D /* MSTDN+Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MSTDN+Emoji.swift"; sourceTree = "<group>"; };
@@ -52,7 +56,7 @@
 		DA80ADEC291B07B6009E6AE3 /* instance.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = instance.json; sourceTree = "<group>"; };
 		DA80ADEE291B0C85009E6AE3 /* DisplayStructData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayStructData.swift; sourceTree = "<group>"; };
 		DA80ADF0291C0E86009E6AE3 /* StringDictionaryDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringDictionaryDisplay.swift; sourceTree = "<group>"; };
-		DAB75AAD291AF36D001DE0E2 /* InstanceMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InstanceMetricsView.swift; path = StatusListViews/InstanceMetricsView.swift; sourceTree = "<group>"; };
+		DAB75AAD291AF36D001DE0E2 /* InstanceMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceMetricsView.swift; sourceTree = "<group>"; };
 		DAC897D32912D2E9004116EA /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		DAC897D52912E5E9004116EA /* MoreStatusExamples.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MoreStatusExamples.json; sourceTree = "<group>"; };
 		DAC897D7291302AA004116EA /* MSTDNStatusItem+Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MSTDNStatusItem+Display.swift"; sourceTree = "<group>"; };
@@ -96,7 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				DAF8A6F9290F21DB00E093C0 /* MSTDNStatusExample.json */,
+				DA2C8720291C3F5800EC19D5 /* ExampleInstance.swift */,
 				DA80ADEC291B07B6009E6AE3 /* instance.json */,
+				DA2C871E291C15A600EC19D5 /* instance_social.json */,
 				DA7A7612291736350080AD4D /* more.json */,
 				DAC897D52912E5E9004116EA /* MoreStatusExamples.json */,
 			);
@@ -106,6 +112,7 @@
 		DA7A75F32916E7BF0080AD4D /* Generic Services */ = {
 			isa = PBXGroup;
 			children = (
+				DA80ADF0291C0E86009E6AE3 /* StringDictionaryDisplay.swift */,
 				DAF8A6FD290F667600E093C0 /* HTMLSnippetRender.swift */,
 				DAF8A6F4290F0CBF00E093C0 /* APIServer.swift */,
 				DAF8A6F2290F0C5600E093C0 /* RequestService.swift */,
@@ -130,6 +137,7 @@
 		DAC897E229134D50004116EA /* StatusListViews */ = {
 			isa = PBXGroup;
 			children = (
+				DAB75AAD291AF36D001DE0E2 /* InstanceMetricsView.swift */,
 				DACA1BDF29183F8800B95276 /* TimelineViewModel.swift */,
 				DACA1BDD29183E1C00B95276 /* PublicTimelineContainerView.swift */,
 				DAF8A6AF290D7DA500E093C0 /* FeedVerticalView.swift */,
@@ -164,8 +172,6 @@
 		DAF8A6AC290D7DA500E093C0 /* ActivityPubExplorer */ = {
 			isa = PBXGroup;
 			children = (
-				DAB75AAD291AF36D001DE0E2 /* InstanceMetricsView.swift */,
-				DA80ADF0291C0E86009E6AE3 /* StringDictionaryDisplay.swift */,
 				DA0E63D729142AB500C4D8EE /* SampleContent */,
 				DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */,
 				DA7A75F32916E7BF0080AD4D /* Generic Services */,
@@ -263,6 +269,7 @@
 			files = (
 				DAF8A6FA290F21DB00E093C0 /* MSTDNStatusExample.json in Resources */,
 				DAC897D62912E5E9004116EA /* MoreStatusExamples.json in Resources */,
+				DA2C871F291C15A600EC19D5 /* instance_social.json in Resources */,
 				DA80ADED291B07B6009E6AE3 /* instance.json in Resources */,
 				DAF8A6B5290D7DA600E093C0 /* Preview Assets.xcassets in Resources */,
 				DAF8A6B2290D7DA600E093C0 /* Assets.xcassets in Resources */,
@@ -300,6 +307,7 @@
 				DAC897DF29133EC3004116EA /* AccountHeaderForRowView.swift in Sources */,
 				DAF8A6AE290D7DA500E093C0 /* ActivityPubExplorerApp.swift in Sources */,
 				DAC897E12913481B004116EA /* DisplayOptionsAvailableView.swift in Sources */,
+				DA2C8721291C3F5800EC19D5 /* ExampleInstance.swift in Sources */,
 				DAF8A6C1290D82C500E093C0 /* APPerson.swift in Sources */,
 				DAB75AAE291AF36D001DE0E2 /* InstanceMetricsView.swift in Sources */,
 				DA7A75F22916E3A80080AD4D /* RequestService+JSON.swift in Sources */,

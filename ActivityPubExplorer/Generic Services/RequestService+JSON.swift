@@ -35,7 +35,7 @@ extension RequestService {
     }
     
     func fetchValue<SomeDecodable: Decodable>(ofType:SomeDecodable.Type, from url:URL) async throws -> SomeDecodable {
-        let data = try await httpFetch(from: url)
+        let data = try await httpFetch(from: url, debugLog: true)
         let decoded = try decoder.decode(SomeDecodable.self, from: data)
         return decoded
     }

@@ -13,6 +13,7 @@ struct FeedVerticalView: View {
 
     
     @State var textfield:String = ""
+    @State var showingServerInfo = false
     
     var queryType = "Public Timeline"
     
@@ -23,7 +24,14 @@ struct FeedVerticalView: View {
             }
             
             Group {
-                Text("\(queryType) on \(timelineVM.displayServer.name)").font(.caption)
+                HStack {
+                    Text("\(queryType) on \(timelineVM.displayServer.name)").font(.caption)
+                    Button("i") {
+                        showingServerInfo.toggle()
+                    }
+                }
+            }.sheet(isPresented: $showingServerInfo) {
+                InstanceMetricsView(instance: timelineVM.displayServer).padding()
             }
             
             PublicTimelineContainerView(list: timelineVM.displayItems).id(timelineVM.displayServer.name)
@@ -46,6 +54,7 @@ struct FeedVerticalView: View {
         .onDisappear() {
             timelineVM.cancelTasks()
         }
+
                 
             
     }
