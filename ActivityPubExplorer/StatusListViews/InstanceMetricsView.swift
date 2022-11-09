@@ -13,7 +13,7 @@ struct InstanceMetricsView: View {
     
     var body: some View {
         VStack {
-            Text(instance.server.name)
+            Text(instance.server.name).padding()
             if let currentProfile {
                 InstanceStatsView(profile: currentProfile).id(currentProfile.uri)
             }

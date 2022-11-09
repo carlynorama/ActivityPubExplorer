@@ -10,8 +10,13 @@ import Foundation
 
 final class TimelineViewModel:ObservableObject {
     
-    @Published var displayServer:MastodonAPIServer = MastodonAPIServer(server: myTestServer)
+    @Published var displayServer:MastodonAPIServer
     @Published var displayItems:[MSTDNStatusItem] = []
+    
+    init(displayServer: MastodonAPIServer) {
+        self.displayServer = displayServer
+        self.displayItems = []
+    }
     
     //TODO: Acting as Account
     

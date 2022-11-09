@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct FeedVerticalView: View {
-    @StateObject var timelineVM = TimelineViewModel()
+    @StateObject var timelineVM = TimelineViewModel(displayServer: MastodonAPIServer(server: myTestServer))
 
     
     @State var textfield:String = ""
@@ -31,7 +31,7 @@ struct FeedVerticalView: View {
                     }
                 }
             }.sheet(isPresented: $showingServerInfo) {
-                InstanceMetricsView(instance: timelineVM.displayServer).padding()
+                InstanceMetricsView(instance: timelineVM.displayServer)
             }
             
             PublicTimelineContainerView(list: timelineVM.displayItems).id(timelineVM.displayServer.name)
