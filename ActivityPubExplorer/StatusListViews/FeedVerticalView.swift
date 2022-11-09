@@ -19,16 +19,19 @@ struct FeedVerticalView: View {
     
     var body: some View {
         VStack {
-            Group {
-                Text("Timeline")
-            }
+
             
             Group {
                 HStack {
-                    Text("\(queryType) on \(timelineVM.displayServer.name)").font(.caption)
-                    Button("i") {
-                        showingServerInfo.toggle()
+                    Group {
+                        //Text("Timeline")
+                        Text("\(queryType) on \(timelineVM.displayServer.name)").font(.caption)
                     }
+                    
+                    Button(
+                        action: { showingServerInfo.toggle() },
+                        label: { Image(systemName: "info") }
+                    )
                 }
             }.sheet(isPresented: $showingServerInfo) {
                 InstanceMetricsView(instance: timelineVM.displayServer)
