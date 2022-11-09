@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		DA0E63D62914120D00C4D8EE /* AccountIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E63D52914120D00C4D8EE /* AccountIconView.swift */; };
+		DA2C871D291C0F7700EC19D5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = DA2C871C291C0F7700EC19D5 /* OrderedCollections */; };
 		DA7A75F22916E3A80080AD4D /* RequestService+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */; };
 		DA7A7613291736350080AD4D /* more.json in Resources */ = {isa = PBXBuildFile; fileRef = DA7A7612291736350080AD4D /* more.json */; };
 		DA7A7616291741AC0080AD4D /* MSTDN+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A7615291741AC0080AD4D /* MSTDN+Emoji.swift */; };
 		DA80ADEB291B0099009E6AE3 /* MSTDNInstanceProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80ADEA291B0099009E6AE3 /* MSTDNInstanceProfile.swift */; };
 		DA80ADED291B07B6009E6AE3 /* instance.json in Resources */ = {isa = PBXBuildFile; fileRef = DA80ADEC291B07B6009E6AE3 /* instance.json */; };
 		DA80ADEF291B0C85009E6AE3 /* DisplayStructData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80ADEE291B0C85009E6AE3 /* DisplayStructData.swift */; };
+		DA80ADF1291C0E86009E6AE3 /* StringDictionaryDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80ADF0291C0E86009E6AE3 /* StringDictionaryDisplay.swift */; };
 		DAB75AAE291AF36D001DE0E2 /* InstanceMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB75AAD291AF36D001DE0E2 /* InstanceMetricsView.swift */; };
 		DAC897D42912D2E9004116EA /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC897D32912D2E9004116EA /* Context.swift */; };
 		DAC897D62912E5E9004116EA /* MoreStatusExamples.json in Resources */ = {isa = PBXBuildFile; fileRef = DAC897D52912E5E9004116EA /* MoreStatusExamples.json */; };
@@ -49,6 +51,7 @@
 		DA80ADEA291B0099009E6AE3 /* MSTDNInstanceProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSTDNInstanceProfile.swift; sourceTree = "<group>"; };
 		DA80ADEC291B07B6009E6AE3 /* instance.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = instance.json; sourceTree = "<group>"; };
 		DA80ADEE291B0C85009E6AE3 /* DisplayStructData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayStructData.swift; sourceTree = "<group>"; };
+		DA80ADF0291C0E86009E6AE3 /* StringDictionaryDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringDictionaryDisplay.swift; sourceTree = "<group>"; };
 		DAB75AAD291AF36D001DE0E2 /* InstanceMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InstanceMetricsView.swift; path = StatusListViews/InstanceMetricsView.swift; sourceTree = "<group>"; };
 		DAC897D32912D2E9004116EA /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		DAC897D52912E5E9004116EA /* MoreStatusExamples.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MoreStatusExamples.json; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA2C871D291C0F7700EC19D5 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				DAB75AAD291AF36D001DE0E2 /* InstanceMetricsView.swift */,
+				DA80ADF0291C0E86009E6AE3 /* StringDictionaryDisplay.swift */,
 				DA0E63D729142AB500C4D8EE /* SampleContent */,
 				DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */,
 				DA7A75F32916E7BF0080AD4D /* Generaic Services */,
@@ -208,6 +213,9 @@
 			dependencies = (
 			);
 			name = ActivityPubExplorer;
+			packageProductDependencies = (
+				DA2C871C291C0F7700EC19D5 /* OrderedCollections */,
+			);
 			productName = ActivityPubExplorer;
 			productReference = DAF8A6AA290D7DA500E093C0 /* ActivityPubExplorer.app */;
 			productType = "com.apple.product-type.application";
@@ -236,6 +244,9 @@
 				Base,
 			);
 			mainGroup = DAF8A6A1290D7DA500E093C0;
+			packageReferences = (
+				DA2C871B291C0F7700EC19D5 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = DAF8A6AB290D7DA500E093C0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -272,6 +283,7 @@
 				DAC897D8291302AA004116EA /* MSTDNStatusItem+Display.swift in Sources */,
 				DACA1BDE29183E1C00B95276 /* PublicTimelineContainerView.swift in Sources */,
 				DAF8A6F7290F110F00E093C0 /* MastodonAPIServer.swift in Sources */,
+				DA80ADF1291C0E86009E6AE3 /* StringDictionaryDisplay.swift in Sources */,
 				DAF8A6FE290F667600E093C0 /* HTMLSnippetRender.swift in Sources */,
 				DAF8A6F3290F0C5600E093C0 /* RequestService.swift in Sources */,
 				DAC897DC29133E68004116EA /* MediaAttachmentView.swift in Sources */,
@@ -489,6 +501,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DA2C871B291C0F7700EC19D5 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DA2C871C291C0F7700EC19D5 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA2C871B291C0F7700EC19D5 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DAF8A6A2290D7DA500E093C0 /* Project object */;
 }

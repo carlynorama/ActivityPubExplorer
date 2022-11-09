@@ -18,8 +18,8 @@ struct InstanceMetricsView: View {
                 InstanceStatsView(profile: currentProfile).id(currentProfile.uri)
             }
         }.task {
-            //currentProfile = await instance.fetchProfile()
-            currentProfile = loadSampleData()
+            currentProfile = await instance.fetchProfile()
+            //currentProfile = loadSampleData()
         }
         
     }
@@ -45,12 +45,44 @@ struct InstanceMetricsView: View {
     }
 }
 
+//let uri, title, shortDescription, instanceMetaDescription: String
+//let email, version: String
+//let urls: Urls
+//let stats: Stats
+//let thumbnail: String
+//let languages: [String]
+//let registrations, approvalRequired, invitesEnabled: Bool
+//let configuration: Configuration
+//let contactAccount: ContactAccount
+//let rules: [JSONAny]
+
 struct InstanceStatsView: View {
     let profile:MSTDNInstanceProfile
     
     var body: some View {
         Form {
             Section("Information") {
+                LabeledContent("Name", value: profile.title)
+                LabeledContent("Member Count", value: profile.stats.userCount, format: .number)
+                LabeledContent("Name", value: profile.title)
+                LabeledContent("Member Count", value: profile.stats.userCount, format: .number)
+            }
+            
+            Section("Additional URLS") {
+                
+            }
+            
+            Section("Contact Account") {
+                LabeledContent("Name", value: profile.title)
+            }
+            
+            Section("Stats") {
+                LabeledContent("Name", value: profile.title)
+                LabeledContent("Member Count", value: profile.stats.userCount, format: .number)
+                
+            }
+            
+            Section("Configuration") {
                 LabeledContent("Name", value: profile.title)
                 LabeledContent("Member Count", value: profile.stats.userCount, format: .number)
                 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let myTestServer:APIServer.Location = APIServer.Location(host: "social.cozytronics.com", apiBase: "/api/v1")!
+let myTestServer:APIServer.Location = APIServer.Location(host: "mastodon.social", apiBase: "/api/v1")!
 
 @main
 struct ActivityPubExplorerApp: App {

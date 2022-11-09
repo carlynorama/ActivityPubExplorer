@@ -9,7 +9,7 @@ import Foundation
 struct MSTDNInstanceProfile: Codable {
     let uri, title, shortDescription, instanceMetaDescription: String
     let email, version: String
-    let urls: Urls
+    let urls: [ServiceURL]?
     let stats: Stats
     let thumbnail: String
     let languages: [String]
@@ -123,12 +123,9 @@ struct Stats: Codable {
 }
 
 // MARK: - Urls
-struct Urls: Codable {
-    let streamingAPI: String
-
-    enum CodingKeys: String, CodingKey {
-        case streamingAPI = "streaming_api"
-    }
+struct ServiceURL: Codable {
+    let name:String
+    let uri:String
 }
 
 //// MARK: - Encode/decode helpers
