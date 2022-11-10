@@ -31,4 +31,12 @@ struct ExampleInstanceData {
         }
         return nil
     }
+    
+    //https://mastodon.example/api/v1/timelines/tag/cats?limit=2
+
+
+    enum ServerTests {
+        static let cats = "/api/v1/timelines/tag/cats?limit=2"
+    }
+
 }
