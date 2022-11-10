@@ -8,20 +8,24 @@ None of this should be used as an example of best practices.
 
 ## Files this Repo
 
-- ContentView: The main view, right now an example of a Mastodon server's public timeline
+### General in "Generic Services" folder
+- `APIServer`: Generic Framework baseline for REST APIs
+- `HTMLSnippetRender`: How to get `HTML` -> `AttributedString` for use in `SwiftUI`
+- `RequestService`: The network connection/HTTP business
+- `StringDictionaryDisplay` - A view that takes in a dictionary, spits out `LabeledContent` views
 
-### General
-- API: Generic Framework baseline for REST APIs
-- HTMLSnippetRender: How to get `HTML` -> `AttributedString` for use in `SwiftUI`
-- RequestService: File with the network connection
-
-### Mastodon Specific
-- MNStatusExample: JSON examplar of what Mastodon API sends back
-- MastodonStatusItem: https://app.quicktype.io/ generated Struct for a Status item and related types
+### MSTDN Folder
+- MSTDNStatusItem: https://app.quicktype.io/ generated struct for a status item and related types
+- MSTDNInstanceProfile: https://app.quicktype.io/ generated struct for the instance profile data
 - MSTDNStatusItem+Display: Things that will likely be useful to other API's as well to prep for viewing. Creates the AttributedString. Introspects for available displayable parameters
-- MastodonAPI: Mastodon API calls
-- StatusListSubViews - Right now all dependent on the Mastodon types
-- Sample Content - Mastodon Style JSON
+- MastodonAPIServer: Mastodon API calls + the server location
+
+### StatusListViews
+- `FeedVerticalView` - this is the main view everything hangs off of
+
+### SampleContent folder
+- `ExampleInstance` - an accessor function for some of the json in this folder
+- misc json
 
 ### ActivityPub/Fediverse compliance
 - ActivityPubGeneral - Directory for AP general stuff. Not really in use yet.
