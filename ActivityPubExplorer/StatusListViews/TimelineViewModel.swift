@@ -7,6 +7,7 @@
 
 import Foundation
 
+//In the other version there was a cancellable task handling server requests that should be here.
 
 final class TimelineViewModel:ObservableObject {
     
@@ -55,13 +56,8 @@ final class TimelineViewModel:ObservableObject {
                     displayServer = MastodonAPIServer(server: newServer)
                 }
             }
-            
             freshLoadPublic()
-
         }
-        
-        //testTimeLine()
-        //In the other version there was a cancellable task handling server requests that should be here.
     }
     
     private func freshLoadPublic()  {
@@ -76,9 +72,6 @@ final class TimelineViewModel:ObservableObject {
             if let newTags = await fetchTrendTags(baseTags: displayTags) {
                 await MainActor.run { displayTags = newTags }
             }
-            
-            
-
         }
     }
     
@@ -109,8 +102,6 @@ final class TimelineViewModel:ObservableObject {
         }catch {
             print(error)
         }
-        
-        //await mastodonInstance
     }
     
     private func loadPublicTimeline() async {
@@ -125,8 +116,6 @@ final class TimelineViewModel:ObservableObject {
         }catch {
             print(error)
         }
-        
-        //await mastodonInstance.tagTimeline(tag: "cat")
     }
     
     
