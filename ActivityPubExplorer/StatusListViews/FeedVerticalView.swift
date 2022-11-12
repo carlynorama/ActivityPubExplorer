@@ -69,7 +69,7 @@ struct FeedVerticalView: View {
                 InstanceMetricsView(instance: timelineVM.displayServer)
             }
             
-            PublicTimelineContainerView(list: timelineVM.displayItems).id(timelineVM.displayServer.name)
+            PublicTimelineContainerView(list: timelineVM.displayItems).id(timelineVM.timelineID)
             
             Group {
                 HStack {
