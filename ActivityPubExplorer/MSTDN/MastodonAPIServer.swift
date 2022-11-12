@@ -87,14 +87,13 @@ struct MastodonAPIServer {
         return validOnly
     }
     
-    public func tagTimeline(tag:String, itemCount:Int = 1) async {
-        do {
+    public func tagTimeline(tag:String, itemCount:Int = 1) async throws -> [MSTDNStatusItem] {
             let url = try APIServer.urlFrom(server: server, endpoint: singleTagEndpoint(for: tag, count: itemCount))
-            let result = try await requestService.fetchValue(ofType: [MSTDNStatusItem].self, from: url)
-            //print(result)
-        } catch {
-            print(error)
-        }
+            print("trying to fetch store")
+            let result = try await requestService.fetchCollectionOfOptionals(ofType: MSTDNStatusItem.self, from: url)
+            let validOnly = result.compactMap { $0 }
+            print("\(result.count - validOnly.count) items could not be rendered")
+            return validOnly
     }
     
     //MARK: Status item detals

@@ -16,9 +16,12 @@ final class TimelineViewModel:ObservableObject {
     
     @Published var timelineID:String
     
+    @Published var queryType:TimelineType
+    
     init(displayServer: MastodonAPIServer) {
         self.displayServer = displayServer
         self.displayItems = []
+        self.queryType = TimelineType.instance
         self.timelineID = displayServer.name+TimelineType.instance.displayName
     }
     
@@ -26,20 +29,96 @@ final class TimelineViewModel:ObservableObject {
     
     var fetchingTask:Task<Void,Error>?
     
-    func fetchTrendTags() async {
-        async let result = await displayServer.fetchTrends()?.compactMap { $0.name }
-        var tagHolder = Set(displayTags)
-        if let tags = await result {
-            let newItems = tagHolder.union(tags)
-            await MainActor.run { displayTags = Array(newItems) }
+    
+    public func updateTimeline(type: TimelineType) async {
+        switch type {
+        case .instance:
+            print("Revert to Public")
+            freshLoadPublic()
+        case .tag(let tag):
+            print("Load \(tag) related")
+            await freshLoadTag(tag)
+        case .account:
+            print("Someday load the person status items")
         }
     }
     
-    func testTimeLine() async {
+    public func updateMSTDNLocation(newLocation:String) async {
+        guard newLocation != displayServer.name else {
+            print("Already pointed to this server")
+            return
+        }
+        if let newServer = APIServer.Location(host: newLocation, apiBase: displayServer.server.apiBase) {
+//            print("absolute:\(newServer.host.absoluteString), relative:\(newServer.host.absoluteString), ")
+            Task {
+                await MainActor.run {
+                    displayServer = MastodonAPIServer(server: newServer)
+                }
+            }
+            
+            freshLoadPublic()
+
+        }
+        
+        //testTimeLine()
+        //In the other version there was a cancellable task handling server requests that should be here.
+    }
+    
+    private func freshLoadPublic()  {
+        Task {
+            await MainActor.run {
+                displayItems = []
+                displayTags = []
+                queryType = .instance
+            }
+            await setTimelineID(type: .instance)
+            await loadPublicTimeline()
+            if let newTags = await fetchTrendTags(baseTags: displayTags) {
+                await MainActor.run { displayTags = newTags }
+            }
+            
+            
+
+        }
+    }
+    
+    private func freshLoadTag(_ tag:String) async {
+        Task {
+            await MainActor.run {
+                displayItems = []
+                displayTags = []
+                queryType = .tag(tag)
+            }
+            await setTimelineID(type: .tag(tag))
+            await loadTagItems(tag)
+            if let newTags = await fetchTrendTags(baseTags: displayTags) {
+                displayTags = newTags
+            }
+        }
+    }
+    
+    private func loadTagItems(_ tag:String) async {
+        do {
+            let tmp:[MSTDNStatusItem] = try await displayServer.tagTimeline(tag: tag)//.compactMap{ $0 }
+            await MainActor.run {
+                displayItems = tmp
+                
+            }
+            print("update complete")
+            
+        }catch {
+            print(error)
+        }
+        
+        //await mastodonInstance
+    }
+    
+    private func loadPublicTimeline() async {
         do {
             let tmp:[MSTDNStatusItem] = try await displayServer.publicTimeline().compactMap{ $0 }
             await MainActor.run {
                 displayItems = tmp
+                
             }
             print("update complete")
             
@@ -51,28 +130,24 @@ final class TimelineViewModel:ObservableObject {
     }
     
     
-    func updateTimelineID(type: TimelineType) async {
+    
+    private func fetchTrendTags(baseTags:[String]) async -> [String]? {
+        let minimumTags = ["cats"] + baseTags
+        async let result = await displayServer.fetchTrends()?.compactMap { $0.name }
+        if let tags = await result {
+            return Array(Set(minimumTags).union(tags))
+        }
+        return minimumTags
+    }
+    
+
+    private func setTimelineID(type: TimelineType) async {
         await MainActor.run {
             self.timelineID = displayServer.name+type.displayName
         }
     }
     
-    func updateViewInstance(newLocation:String) {
-        
-        if let newServer = APIServer.Location(host: newLocation, apiBase: displayServer.server.apiBase) {
-            print("absolute:\(newServer.host.absoluteString), relative:\(newServer.host.absoluteString), ")
-            displayItems = []
-            displayServer = MastodonAPIServer(server: newServer)
-            Task { await testTimeLine() }
-            Task { await fetchTrendTags() }
-            Task { await updateTimelineID(type: .instance) }
-        }
-        
-        //testTimeLine()
-        //In the other version there was a cancellable task handling server requests that should be here. 
-    }
-    
-    func cancelTasks() {
+    public func cancelTasks() {
         
     }
     

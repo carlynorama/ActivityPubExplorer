@@ -35,7 +35,7 @@ struct FeedVerticalView: View {
     @State var textfield:String = ""
     @State var showingServerInfo = false
     
-    @State var queryType:TimelineType = .instance
+
     
     var body: some View {
         VStack {
@@ -45,7 +45,7 @@ struct FeedVerticalView: View {
                 HStack {
                     Group {
                         //Text("Timeline")
-                        Text("\(queryType.displayName) on \(timelineVM.displayServer.name)").font(.caption)
+                        Text("\(timelineVM.queryType.displayName) on \(timelineVM.displayServer.name)").font(.caption)
                     }
                     
                     Button(
@@ -57,7 +57,7 @@ struct FeedVerticalView: View {
                 (FlowLayout(alignment: .center)) {
                     ForEach(timelineVM.displayTags, id:\.self) { tag in
                         Button("\(tag)") {
-                            queryType = .tag(tag)
+                            Task { await timelineVM.updateTimeline(type: .tag(tag)) }
                         }
                     }
                 }
@@ -75,19 +75,14 @@ struct FeedVerticalView: View {
                 HStack {
                     TextField("enter a new server host", text: $textfield).textInputAutocapitalization(.never)
                     Button("Switch") {
-                        timelineVM.updateViewInstance(newLocation: textfield)
+                        Task { await timelineVM.updateMSTDNLocation(newLocation: textfield) }
                     }
                 }.padding()
             }
         }
         .task {
-            await timelineVM.testTimeLine()
-        }
-        .task {
-            await timelineVM.fetchTrendTags()
-            // await mastodonInstance.getFollowing(for: "knitter")
-        }
-        .onDisappear() {
+            await timelineVM.updateTimeline(type: .instance)
+        }.onDisappear() {
             timelineVM.cancelTasks()
         }
 
