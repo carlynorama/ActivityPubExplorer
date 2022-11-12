@@ -12,6 +12,7 @@ final class TimelineViewModel:ObservableObject {
     
     @Published var displayServer:MastodonAPIServer
     @Published var displayItems:[MSTDNStatusItem] = []
+    @Published var displayTags:[String] = []
     
     init(displayServer: MastodonAPIServer) {
         self.displayServer = displayServer
@@ -21,6 +22,16 @@ final class TimelineViewModel:ObservableObject {
     //TODO: Acting as Account
     
     var fetchingTask:Task<Void,Error>?
+    
+    func fetchTrendTags() async {
+        async let result = await displayServer.fetchTrends()?.compactMap { $0.name }
+        var tagHolder = Set(displayTags)
+        if let tags = await result {
+            let newItems = tagHolder.union(tags)
+            await MainActor.run { displayTags = Array(newItems) }
+        }
+       
+    }
     
     func testTimeLine() async {
         do {
@@ -44,6 +55,7 @@ final class TimelineViewModel:ObservableObject {
             displayItems = []
             displayServer = MastodonAPIServer(server: newServer)
             Task { await testTimeLine() }
+            Task { await fetchTrendTags() } 
         }
         
         //testTimeLine()

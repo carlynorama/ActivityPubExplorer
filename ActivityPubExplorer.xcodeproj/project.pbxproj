@@ -11,6 +11,9 @@
 		DA2C871D291C0F7700EC19D5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = DA2C871C291C0F7700EC19D5 /* OrderedCollections */; };
 		DA2C871F291C15A600EC19D5 /* instance_social.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2C871E291C15A600EC19D5 /* instance_social.json */; };
 		DA2C8721291C3F5800EC19D5 /* ExampleInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C8720291C3F5800EC19D5 /* ExampleInstance.swift */; };
+		DA3B64D1291EDC8D006C89EE /* trends.json in Resources */ = {isa = PBXBuildFile; fileRef = DA3B64D0291EDC8D006C89EE /* trends.json */; };
+		DA3B64D3291EDD25006C89EE /* MSTDNTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B64D2291EDD25006C89EE /* MSTDNTrend.swift */; };
+		DA3B64D5291EE7A1006C89EE /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B64D4291EE7A1006C89EE /* FlowLayout.swift */; };
 		DA7A75F22916E3A80080AD4D /* RequestService+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */; };
 		DA7A7613291736350080AD4D /* more.json in Resources */ = {isa = PBXBuildFile; fileRef = DA7A7612291736350080AD4D /* more.json */; };
 		DA7A7616291741AC0080AD4D /* MSTDN+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A7615291741AC0080AD4D /* MSTDN+Emoji.swift */; };
@@ -47,6 +50,9 @@
 		DA0E63D52914120D00C4D8EE /* AccountIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountIconView.swift; sourceTree = "<group>"; };
 		DA2C871E291C15A600EC19D5 /* instance_social.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = instance_social.json; sourceTree = "<group>"; };
 		DA2C8720291C3F5800EC19D5 /* ExampleInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleInstance.swift; sourceTree = "<group>"; };
+		DA3B64D0291EDC8D006C89EE /* trends.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trends.json; sourceTree = "<group>"; };
+		DA3B64D2291EDD25006C89EE /* MSTDNTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSTDNTrend.swift; sourceTree = "<group>"; };
+		DA3B64D4291EE7A1006C89EE /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestService+JSON.swift"; sourceTree = "<group>"; };
 		DA7A7612291736350080AD4D /* more.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = more.json; sourceTree = "<group>"; };
 		DA7A7615291741AC0080AD4D /* MSTDN+Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MSTDN+Emoji.swift"; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 		DA0E63D729142AB500C4D8EE /* SampleContent */ = {
 			isa = PBXGroup;
 			children = (
+				DA3B64D0291EDC8D006C89EE /* trends.json */,
 				DAF8A6F9290F21DB00E093C0 /* MSTDNStatusExample.json */,
 				DA2C8720291C3F5800EC19D5 /* ExampleInstance.swift */,
 				DA80ADEC291B07B6009E6AE3 /* instance.json */,
@@ -110,6 +117,7 @@
 		DA7A75F32916E7BF0080AD4D /* Generic Services */ = {
 			isa = PBXGroup;
 			children = (
+				DA3B64D4291EE7A1006C89EE /* FlowLayout.swift */,
 				DA80ADF0291C0E86009E6AE3 /* StringDictionaryDisplay.swift */,
 				DAF8A6FD290F667600E093C0 /* HTMLSnippetRender.swift */,
 				DAF8A6F4290F0CBF00E093C0 /* APIServer.swift */,
@@ -124,6 +132,7 @@
 			children = (
 				DAF8A6FB290F224100E093C0 /* MSTDNStatusItem.swift */,
 				DAF8A6F6290F110F00E093C0 /* MastodonAPIServer.swift */,
+				DA3B64D2291EDD25006C89EE /* MSTDNTrend.swift */,
 				DAC897D7291302AA004116EA /* MSTDNStatusItem+Display.swift */,
 				DA7A7615291741AC0080AD4D /* MSTDN+Emoji.swift */,
 				DA80ADEA291B0099009E6AE3 /* MSTDNInstanceProfile.swift */,
@@ -267,6 +276,7 @@
 				DAF8A6FA290F21DB00E093C0 /* MSTDNStatusExample.json in Resources */,
 				DAC897D62912E5E9004116EA /* MoreStatusExamples.json in Resources */,
 				DA2C871F291C15A600EC19D5 /* instance_social.json in Resources */,
+				DA3B64D1291EDC8D006C89EE /* trends.json in Resources */,
 				DA80ADED291B07B6009E6AE3 /* instance.json in Resources */,
 				DAF8A6B5290D7DA600E093C0 /* Preview Assets.xcassets in Resources */,
 				DAF8A6B2290D7DA600E093C0 /* Assets.xcassets in Resources */,
@@ -286,6 +296,7 @@
 				DAF8A6B0290D7DA500E093C0 /* FeedVerticalView.swift in Sources */,
 				DAC897D8291302AA004116EA /* MSTDNStatusItem+Display.swift in Sources */,
 				DACA1BDE29183E1C00B95276 /* PublicTimelineContainerView.swift in Sources */,
+				DA3B64D5291EE7A1006C89EE /* FlowLayout.swift in Sources */,
 				DAF8A6F7290F110F00E093C0 /* MastodonAPIServer.swift in Sources */,
 				DA80ADF1291C0E86009E6AE3 /* StringDictionaryDisplay.swift in Sources */,
 				DAF8A6FE290F667600E093C0 /* HTMLSnippetRender.swift in Sources */,
@@ -305,6 +316,7 @@
 				DAC897E12913481B004116EA /* DisplayOptionsAvailableView.swift in Sources */,
 				DA2C8721291C3F5800EC19D5 /* ExampleInstance.swift in Sources */,
 				DAF8A6C1290D82C500E093C0 /* APPerson.swift in Sources */,
+				DA3B64D3291EDD25006C89EE /* MSTDNTrend.swift in Sources */,
 				DAB75AAE291AF36D001DE0E2 /* InstanceMetricsView.swift in Sources */,
 				DA7A75F22916E3A80080AD4D /* RequestService+JSON.swift in Sources */,
 			);

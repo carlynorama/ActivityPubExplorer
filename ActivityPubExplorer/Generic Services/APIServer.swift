@@ -35,6 +35,7 @@ struct APIServer {
         let queryItems: [URLQueryItem]
     }
     
+    
     static func urlFrom(server:Location, path:String, usingAPIBase:Bool = false) throws -> URL {
         var components = URLComponents()
         components.scheme = server.scheme

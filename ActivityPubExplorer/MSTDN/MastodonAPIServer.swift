@@ -20,20 +20,12 @@ struct MastodonAPIServer {
     
     //MARK: - Instance Data
     public func fetchProfile() async -> MSTDNInstanceProfile? {
-        do {
-            let url = try APIServer.urlFrom(server: server, path: "/instance", usingAPIBase: true)
-            print("URL for Instance Info: \(url)")
-            let result = try await requestService.fetchValue(ofType: MSTDNInstanceProfile.self, from: url)
-            print(result)
-            return result
-        } catch {
-            print(error)
-        }
-        return nil 
+        await fetchObject(ofType: MSTDNInstanceProfile.self, fromPath: "/instance")
     }
     
-    public func trends() {
-        
+    public func fetchTrends() async -> [MSTDNTagTrend]? {
+        //_ = await fetchJSON(fromPath: "/trends")
+        await fetchObject(ofType: [MSTDNTagTrend].self, fromPath: "/trends")
     }
     
     public func peers() {
@@ -52,6 +44,34 @@ struct MastodonAPIServer {
         
     }
     
+    //MARK: Generic Object Fetcher
+    
+    public func fetchObject<T:Codable>(ofType:T.Type, fromPath:String) async -> T? {
+        do {
+            let url = try APIServer.urlFrom(server: server, path: fromPath, usingAPIBase: true)
+            //print("URL for Instance Info: \(url)")
+            let result = try await requestService.fetchValue(ofType: ofType, from: url)
+            //print(result)
+            return result
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    //MARK: Generic New Type of JSON printer
+    public func fetchJSON(fromPath:String) async -> String? {
+        do {
+            let url = try APIServer.urlFrom(server: server, path: fromPath, usingAPIBase: true)
+            print("URL for Instance Info: \(url)")
+            let result = try await requestService.fetchRawString(from: url)
+            print(result)
+            return result
+        } catch {
+            print(error)
+        }
+        return nil
+    }
     
     
     //MARK: - Timelines
@@ -71,7 +91,7 @@ struct MastodonAPIServer {
         do {
             let url = try APIServer.urlFrom(server: server, endpoint: singleTagEndpoint(for: tag, count: itemCount))
             let result = try await requestService.fetchValue(ofType: [MSTDNStatusItem].self, from: url)
-            print(result)
+            //print(result)
         } catch {
             print(error)
         }

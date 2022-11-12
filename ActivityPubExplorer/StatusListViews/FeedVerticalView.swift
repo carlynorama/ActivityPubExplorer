@@ -7,6 +7,26 @@
 
 import SwiftUI
 
+enum TimelineType {
+    case tag(String)
+    case account
+    case instance
+}
+
+extension TimelineType {
+    var displayName:String {
+        switch self {
+            
+        case .tag(let tag):
+           return "Timeline for tag \"\(tag)\""
+        case .account:
+            return "Timeline for account ---"
+        case .instance:
+            return "Public Timeline"
+        }
+    }
+}
+
 
 struct FeedVerticalView: View {
     @StateObject var timelineVM = TimelineViewModel(displayServer: MastodonAPIServer(server: myTestServer))
@@ -15,7 +35,7 @@ struct FeedVerticalView: View {
     @State var textfield:String = ""
     @State var showingServerInfo = false
     
-    var queryType = "Public Timeline"
+    @State var queryType:TimelineType = .instance
     
     var body: some View {
         VStack {
@@ -25,7 +45,7 @@ struct FeedVerticalView: View {
                 HStack {
                     Group {
                         //Text("Timeline")
-                        Text("\(queryType) on \(timelineVM.displayServer.name)").font(.caption)
+                        Text("\(queryType.displayName) on \(timelineVM.displayServer.name)").font(.caption)
                     }
                     
                     Button(
@@ -33,6 +53,18 @@ struct FeedVerticalView: View {
                         label: { Image(systemName: "info") }
                     )
                 }
+                
+                (FlowLayout(alignment: .center)) {
+                    ForEach(timelineVM.displayTags, id:\.self) { tag in
+                        Button("\(tag)") {
+                            queryType = .tag(tag)
+                        }
+                    }
+                }
+                
+                    
+                
+                
             }.sheet(isPresented: $showingServerInfo) {
                 InstanceMetricsView(instance: timelineVM.displayServer)
             }
@@ -52,6 +84,7 @@ struct FeedVerticalView: View {
             await timelineVM.testTimeLine()
         }
         .task {
+            await timelineVM.fetchTrendTags()
             // await mastodonInstance.getFollowing(for: "knitter")
         }
         .onDisappear() {
@@ -61,16 +94,15 @@ struct FeedVerticalView: View {
                 
             
     }
-    
-    func printString(_ item:MSTDNStatusItem) -> String? {
-        print(item.content)
-        return item.content
-    }
-    
-    
-    func updateViewInstance(newLocation:String) {
+
+    func updateTimeline(tag:String) {
         
     }
+    
+    func returnToPublic() {
+        
+    }
+
 }
 
 
