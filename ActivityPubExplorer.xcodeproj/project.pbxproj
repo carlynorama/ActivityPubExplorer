@@ -14,6 +14,7 @@
 		DA3B64D1291EDC8D006C89EE /* trends.json in Resources */ = {isa = PBXBuildFile; fileRef = DA3B64D0291EDC8D006C89EE /* trends.json */; };
 		DA3B64D3291EDD25006C89EE /* MSTDNTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B64D2291EDD25006C89EE /* MSTDNTrend.swift */; };
 		DA3B64D5291EE7A1006C89EE /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B64D4291EE7A1006C89EE /* FlowLayout.swift */; };
+		DA3B64D729205C22006C89EE /* SavedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3B64D629205C22006C89EE /* SavedFrame.swift */; };
 		DA7A75F22916E3A80080AD4D /* RequestService+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */; };
 		DA7A7613291736350080AD4D /* more.json in Resources */ = {isa = PBXBuildFile; fileRef = DA7A7612291736350080AD4D /* more.json */; };
 		DA7A7616291741AC0080AD4D /* MSTDN+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7A7615291741AC0080AD4D /* MSTDN+Emoji.swift */; };
@@ -53,6 +54,7 @@
 		DA3B64D0291EDC8D006C89EE /* trends.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trends.json; sourceTree = "<group>"; };
 		DA3B64D2291EDD25006C89EE /* MSTDNTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSTDNTrend.swift; sourceTree = "<group>"; };
 		DA3B64D4291EE7A1006C89EE /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		DA3B64D629205C22006C89EE /* SavedFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedFrame.swift; sourceTree = "<group>"; };
 		DA7A75F12916E3A80080AD4D /* RequestService+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestService+JSON.swift"; sourceTree = "<group>"; };
 		DA7A7612291736350080AD4D /* more.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = more.json; sourceTree = "<group>"; };
 		DA7A7615291741AC0080AD4D /* MSTDN+Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MSTDN+Emoji.swift"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		DAF8A6AC290D7DA500E093C0 /* ActivityPubExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				DA3B64D629205C22006C89EE /* SavedFrame.swift */,
 				DA0E63D729142AB500C4D8EE /* SampleContent */,
 				DAF8A6AD290D7DA500E093C0 /* ActivityPubExplorerApp.swift */,
 				DA7A75F32916E7BF0080AD4D /* Generic Services */,
@@ -297,6 +300,7 @@
 				DAC897D8291302AA004116EA /* MSTDNStatusItem+Display.swift in Sources */,
 				DACA1BDE29183E1C00B95276 /* PublicTimelineContainerView.swift in Sources */,
 				DA3B64D5291EE7A1006C89EE /* FlowLayout.swift in Sources */,
+				DA3B64D729205C22006C89EE /* SavedFrame.swift in Sources */,
 				DAF8A6F7290F110F00E093C0 /* MastodonAPIServer.swift in Sources */,
 				DA80ADF1291C0E86009E6AE3 /* StringDictionaryDisplay.swift in Sources */,
 				DAF8A6FE290F667600E093C0 /* HTMLSnippetRender.swift in Sources */,

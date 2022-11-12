@@ -16,7 +16,6 @@ enum TimelineType {
 extension TimelineType {
     var displayName:String {
         switch self {
-            
         case .tag(let tag):
            return "Timeline for tag \"\(tag)\""
         case .account:
